@@ -1,4 +1,4 @@
-package com.revature.bank;
+package com.revature.dao;
 import java.sql.*;  
 import java.util.*;
 import java.util.Arrays;

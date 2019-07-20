@@ -1,6 +1,6 @@
 package com.revature;
 
-import com.revature.bank.*;
+import com.revature.dao.*;
 import java.io.IOException;
 import java.io.PrintWriter;
 
