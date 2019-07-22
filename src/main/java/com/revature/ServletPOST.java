@@ -21,11 +21,8 @@ public class ServletPOST extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		
-				DataManager session = new DataManager();
-				session.connect();
-				session.register("newfolder","newfolder");
-				String test = session.say();
+				
+			
 		// set response headers
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
@@ -38,9 +35,9 @@ public class ServletPOST extends HttpServlet {
 			  .append("			<title>typing post</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<form action=\"welcome\" method=\"POST\">\r\n")
+			  .append("			<form action=\"dfa\" method=\"POST\">\r\n")
 			  .append("				write name: \r\n")
-			  .append(test)
+			  
 			  .append("				<input type=\"text\" name=\"user\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
 			  .append("			</form>\r\n")
@@ -51,8 +48,12 @@ public class ServletPOST extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-		String user = request.getParameter("user");
-		
+				String user = request.getParameter("user");
+				DataManager session = new DataManager();
+				session.connect();
+				session.register(user,user);
+				String test = session.say();
+
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		

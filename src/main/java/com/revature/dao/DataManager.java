@@ -21,7 +21,7 @@ public class DataManager{
         try  {
 
              conn = DriverManager.getConnection(
-                "jdbc:postgresql://localhost:5432/test", "postgres", "none");
+                "jdbc:postgresql://localhost:5432/project1", "postgres", "none");
 
             if (conn != null) {
                 
@@ -820,7 +820,7 @@ public class DataManager{
     }
 
     public void addNewUser(String username,String password){
-        String query = " insert into account (username,password) values ('%s','%s');"; //TODO change to prepared statment
+        String query = " insert into user_accounts(username,password) values ('%s','%s');"; //TODO change to prepared statment
         query  = String.format(query, username,password);
         Statement stmt; 
         try{
@@ -832,7 +832,7 @@ public class DataManager{
             
 
         }catch(Exception  e){
-            System.err.format("ERROR: \n%s\n", e.getMessage());
+            System.err.format("ERROR line 835: \n%s\n", e.getMessage());
         }finally{
             
         }
@@ -1002,7 +1002,7 @@ public class DataManager{
 
     public Boolean usernameExsists(String username){
         boolean result=false;
-        String query = "select user_id from account where username='%s' "; //TODO change to prepared statment
+        String query = "select user_id from user_accounts where username='%s' "; //TODO change to prepared statment
         query  = String.format(query, username);
         Statement stmt; 
         try{
