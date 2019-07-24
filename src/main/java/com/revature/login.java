@@ -35,6 +35,7 @@ public class login extends HttpServlet {
 			  .append("			<title>login</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
+			  .append("		login:\n\r")
 			  .append("			<form action=\"dfa\" method=\"POST\">\r\n")
 			  .append("				name: \r\n")
 			  

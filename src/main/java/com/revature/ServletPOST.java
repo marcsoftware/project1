@@ -32,9 +32,10 @@ public class ServletPOST extends HttpServlet {
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
-			  .append("			<title>typing post</title>\r\n")
+			  .append("			<title>register</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
+			  .append("		register\r\n")
 			  .append("			<form action=\"dfa\" method=\"POST\">\r\n")
 			  .append("				name: \r\n")
 			  
