@@ -36,9 +36,11 @@ public class ServletPOST extends HttpServlet {
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<form action=\"dfa\" method=\"POST\">\r\n")
-			  .append("				write name: \r\n")
+			  .append("				name: \r\n")
 			  
 			  .append("				<input type=\"text\" name=\"user\" />\r\n")
+			  .append("				password: \r\n")
+			  .append("				<input type=\"password\" name=\"password\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
 			  .append("			</form>\r\n")
 			  .append("		</body>\r\n")
@@ -49,9 +51,10 @@ public class ServletPOST extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 				String user = request.getParameter("user");
+				String password = request.getParameter("password");
 				DataManager session = new DataManager();
 				session.connect();
-				session.register(user,user);
+				session.register(user,password);
 				String test = session.say();
 
 		response.setContentType("text/html");
@@ -77,4 +80,10 @@ public class ServletPOST extends HttpServlet {
 			  .append("</html>\r\n");
 	}	
 	
+
+	public void destroy(  ) {
+		
+	  }
+	  
+
 }

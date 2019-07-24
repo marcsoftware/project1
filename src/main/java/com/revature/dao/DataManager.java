@@ -784,11 +784,12 @@ public class DataManager{
         System.out.println("Your application has been submitted.");
     }
 
-    public void register(String username,String password){
+    public Boolean register(String username,String password){
         
         if(usernameExsists(username)){
             System.out.println("that username already exsists.");
-            return;
+
+            return false;
         }else{
             System.out.println("new user registered.");
         }
@@ -816,7 +817,7 @@ public class DataManager{
         //
            
         addNewUser(username,password);
-
+        return true;
     }
 
     public void addNewUser(String username,String password){
