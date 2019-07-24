@@ -36,7 +36,7 @@ public class login extends HttpServlet {
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("		login:\n\r")
-			  .append("			<form action=\"dfa\" method=\"POST\">\r\n")
+			  .append("			<form action=\"login\" method=\"POST\">\r\n")
 			  .append("				name: \r\n")
 			  
 			  .append("				<input type=\"text\" name=\"user\" />\r\n")
@@ -55,9 +55,13 @@ public class login extends HttpServlet {
 				String password = request.getParameter("password");
 				DataManager session = new DataManager();
 				session.connect();
-				session.register(user,password);
-				String test = session.say();
-
+				String test  = session.login(user,password);
+				System.out.println("logged in as: "+test);
+				
+				System.out.println("logged in as: "+test);
+				System.out.println("logged in as: "+test);
+				System.out.println("logged in as: "+test);
+				System.out.println("logged in as: "+test);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		

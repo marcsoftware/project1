@@ -36,7 +36,7 @@ public class register extends HttpServlet {
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("		register\r\n")
-			  .append("			<form action=\"dfa\" method=\"POST\">\r\n")
+			  .append("			<form action=\"register\" method=\"POST\">\r\n")
 			  .append("				name: \r\n")
 			  
 			  .append("				<input type=\"text\" name=\"user\" />\r\n")
