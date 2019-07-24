@@ -38,7 +38,7 @@
 	</dependencies>
 	
 	<build>
-		<finalName>servletpost</finalName>
+		<finalName>app</finalName>
         <sourceDirectory>src/main/java</sourceDirectory>
         
         <plugins>
