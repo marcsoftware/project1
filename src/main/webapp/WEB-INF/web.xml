@@ -8,13 +8,13 @@
 	<display-name>Servlet Application</display-name>
 
 	<servlet>
-		<servlet-name>servletPost</servlet-name>
-		<servlet-class>com.revature.ServletPOST</servlet-class>
+		<servlet-name>register</servlet-name>
+		<servlet-class>com.revature.register</servlet-class>
 		<load-on-startup>1</load-on-startup>
 	</servlet>
 	
 	<servlet-mapping>
-		<servlet-name>servletPost</servlet-name>
+		<servlet-name>register</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
 
