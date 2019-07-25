@@ -53,12 +53,7 @@ public class login extends HttpServlet {
 				DataManager session = new DataManager();
 				session.connect();
 				String test  = session.login(user,password);
-				System.out.println("logged in as: "+test);
 				
-				System.out.println("logged in as: "+test);
-				System.out.println("logged in as: "+test);
-				System.out.println("logged in as: "+test);
-				System.out.println("logged in as: "+test);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		
@@ -74,10 +69,10 @@ public class login extends HttpServlet {
 			  
 		if (user != null && !user.trim().isEmpty()) {
 			writer.append("	Welcome " + user + ".\r\n");
-			writer.append("	You wrote a name.\r\n");
+			writer.append("	You are logged in.\r\n");
 			createSession( request,  response);
 		} else {
-			writer.append("	You did not entered a name!\r\n");
+			writer.append("	some went wrong.\r\n");
 		}
 		writer.append("		</body>\r\n")
 			  .append("</html>\r\n");

@@ -55,8 +55,13 @@ public class register extends HttpServlet {
 				String password = request.getParameter("password");
 				DataManager session = new DataManager();
 				session.connect();
-				session.register(user,password);
-				String test = session.say();
+				Boolean result = session.register(user,password);
+				System.out.println("logged in as: "+result);
+				
+				System.out.println("logged in as: "+result);
+				System.out.println("logged in as: "+result);
+				System.out.println("logged in as: "+result);
+				System.out.println("logged in as: "+result);
 
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
@@ -71,11 +76,13 @@ public class register extends HttpServlet {
 			  .append("		<body>\r\n");
 
 			  
-		if (user != null && !user.trim().isEmpty()) {
+		if (user != null && !user.trim().isEmpty() && result) {
 			writer.append("	Welcome " + user + ".\r\n");
-			writer.append("	You wrote a name.\r\n");
+			writer.append("	You have regsiter a new account\r\n");
+		}else if(!result){
+			writer.append("	That user already exsists.\r\n");
 		} else {
-			writer.append("	You did not entered a name!\r\n");
+			writer.append("	something went wrong.\r\n");
 		}
 		writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
