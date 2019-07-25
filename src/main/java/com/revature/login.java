@@ -1,13 +1,10 @@
 package com.revature;
 
 import com.revature.dao.*;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;  
+import javax.servlet.*;  
+import javax.servlet.http.*;  
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
 
 
 import java.util.Scanner;
@@ -78,6 +75,7 @@ public class login extends HttpServlet {
 		if (user != null && !user.trim().isEmpty()) {
 			writer.append("	Welcome " + user + ".\r\n");
 			writer.append("	You wrote a name.\r\n");
+			createSession( request,  response);
 		} else {
 			writer.append("	You did not entered a name!\r\n");
 		}
@@ -88,7 +86,31 @@ public class login extends HttpServlet {
 
 	public void destroy(  ) {
 		
-	  }
+	}
+
+
+	public void createSession(HttpServletRequest request, HttpServletResponse response){
+		try{  
+			response.setContentType("text/html");  
+			PrintWriter out = response.getWriter();  
+			
+			String n=request.getParameter("user");  
+			out.print("Welcome "+n);  
+			
+			HttpSession session=request.getSession();  
+			session.setAttribute("uname",n);  
+	
+			out.print("<a href='servlet2'>visit</a>");  
+					
+			out.close();  
+  
+        }catch(Exception e){
+			System.out.println(e);
+		}  
+   		   
+  
+		
+	}
 	  
 
 }
