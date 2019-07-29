@@ -1,3 +1,4 @@
+//this is the form for submitting reimbursement
 package com.revature;
 
 import com.revature.dao.*;
@@ -11,7 +12,7 @@ import java.util.Scanner;
 
 
 
-public class login extends HttpServlet {
+public class submit extends HttpServlet {
 
 	private static final long serialVersionUID = -1641096228274971485L;
 
@@ -43,13 +44,15 @@ public class login extends HttpServlet {
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
-			  .append("		login:\n\r")
-			  .append("			<form action=\"login\" method=\"POST\">\r\n")
-			  .append("				name: \r\n")
+			  .append("		form:\n\r")
+			  .append("			<form action=\"submit\" method=\"POST\">\r\n")
+			  .append("				amount: \r\n")
 			  
-			  .append("				<input type=\"text\" name=\"user\" />\r\n")
-			  .append("				password: \r\n")
-			  .append("				<input type=\"password\" name=\"password\" />\r\n")
+			  .append("				<input type=\"text\" name=\"amount\" />\r\n")
+			  .append("				comment: \r\n")
+			  .append("				<input type=\"test\" name=\"comment\" />\r\n")
+			  .append("				picture: \r\n")
+			  .append("				<input type=\"test\" name=\"picture\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
 			  .append("			</form>\r\n")
 			  .append("		</body>\r\n")
@@ -59,17 +62,9 @@ public class login extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-				String user = request.getParameter("user");
-				String password = request.getParameter("password");
-				DataManager session = new DataManager();
-				session.connect();
-				
-				Cookie test = new Cookie("user", user);
-				test.setMaxAge(60*60*24);
-				response.addCookie( test );
-				 test = new Cookie("password", password);
-				test.setMaxAge(60*60*24);
-				response.addCookie( test );
+			
+			
+			
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		
@@ -78,18 +73,11 @@ public class login extends HttpServlet {
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
-			  .append("			<title>logged in</title>\r\n")
+			  .append("			<title>subbmitted</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n");
 
-			  
-		if (user != null && !user.trim().isEmpty()) {
-			writer.append("	Welcome " + user + ".\r\n");
-			writer.append("	You are logged in.\r\n");
-			createSession( request,  response);
-		} else {
-			writer.append("	some went wrong.\r\n");
-		}
+	
 		writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}	
@@ -111,7 +99,7 @@ public class login extends HttpServlet {
 			HttpSession session=request.getSession();  
 			session.setAttribute("uname",n);  
 	
-			out.print("<a href='/app/submit'>apply</a>");  
+			
 					
 			out.close();  
   

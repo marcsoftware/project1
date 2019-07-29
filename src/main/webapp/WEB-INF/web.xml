@@ -29,4 +29,17 @@
 		<servlet-name>login</servlet-name>
 		<url-pattern>/</url-pattern>
 	</servlet-mapping>
+
+	
+<servlet>
+		<servlet-name>submit</servlet-name>
+		<servlet-class>com.revature.submit</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>submit</servlet-name>
+		<url-pattern>/submit</url-pattern>
+	</servlet-mapping>
+
 </web-app>
