@@ -89,7 +89,7 @@ public class DataManager{
             return;
         }
 
-        String query = "select * from account";
+        String query = "select * from user_account";
         Statement stmt; 
         try{
             
@@ -690,7 +690,7 @@ public class DataManager{
           }
           //
 
-        String query = "select user_id from account where username='%s' and password='%s'"; //TODO change to prepared statment
+        String query = "select user_id from user_accounts where username='%s' and password='%s'"; //TODO change to prepared statment
         query  = String.format(query, username,password);
         Statement stmt; 
         try{
@@ -843,8 +843,8 @@ public class DataManager{
 
     public void addNewApplication(String owner,String coowner){
         String query= "INSERT INTO applications(owner_id,coowner_id,status) VALUES "+
-                      "  ((SELECT user_id FROM account WHERE username='%s'),"+
-                      " (SELECT user_id FROM account  WHERE username='%s'),'pending');";                
+                      "  ((SELECT user_id FROM user_accounts WHERE username='%s'),"+
+                      " (SELECT user_id FROM user_accounts  WHERE username='%s'),'pending');";                
 
         
         query  = String.format(query, owner,coowner);
@@ -870,7 +870,7 @@ public class DataManager{
     //overloaded
     public void addNewApplication(String owner){
         String query= "INSERT INTO applications(owner_id,status) VALUES "+
-                      "  ((SELECT user_id FROM account WHERE username='%s'),'pending')";                
+                      "  ((SELECT user_id FROM user_accounts WHERE username='%s'),'pending')";                
 
         
         query  = String.format(query, owner);
@@ -917,7 +917,7 @@ public class DataManager{
 
 
 
-        String query = "select user_id from account where username='%s' and password='%s'"; //TODO change to prepared statment
+        String query = "select user_id from user_accounts where username='%s' and password='%s'"; //TODO change to prepared statment
         query  = String.format(query, username,password);
         Statement stmt; 
         Boolean result=false;
@@ -958,7 +958,7 @@ public class DataManager{
     public Boolean checkPermission(String username,String password){
 
 
-        String query = "select status from account where username='%s' and password='%s'"; //TODO change to prepared statment
+        String query = "select status from user_accounts where username='%s' and password='%s'"; //TODO change to prepared statment
         query  = String.format(query, username,password);
         Statement stmt; 
         Boolean result=false;

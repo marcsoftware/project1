@@ -19,7 +19,14 @@ public class login extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 				
+				
+				
+				
 			
+         
+      // Get an array of Cookies associated with this domain
+	  Cookie[] cookies = request.getCookies();
+	  System.out.println("---------------"+cookies);
 		// set response headers
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
@@ -29,9 +36,11 @@ public class login extends HttpServlet {
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
+			  
 			  .append("			<title>login</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
+			  .append("			<p>:::"+cookies[0].getName( )+"------"+cookies[0].getValue( )+"</p>\r\n")
 			  .append("		login:\n\r")
 			  .append("			<form action=\"login\" method=\"POST\">\r\n")
 			  .append("				name: \r\n")
@@ -52,8 +61,13 @@ public class login extends HttpServlet {
 				String password = request.getParameter("password");
 				DataManager session = new DataManager();
 				session.connect();
-				String test  = session.login(user,password);
 				
+				Cookie test = new Cookie("user", "testname");
+				test.setMaxAge(60*60*24);
+				response.addCookie( test );
+				 test = new Cookie("password", "testpass");
+				test.setMaxAge(60*60*24);
+				response.addCookie( test );
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		
@@ -103,8 +117,6 @@ public class login extends HttpServlet {
 			System.out.println(e);
 		}  
    		   
-  
-		
 	}
 	  
 
