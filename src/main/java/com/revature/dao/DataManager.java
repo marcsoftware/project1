@@ -668,8 +668,8 @@ public class DataManager{
     }
 
 
-    public String login(String username,String password){
-
+    public Boolean login(String username,String password){
+            Boolean result=false;
           //
           String data = password;
           
@@ -712,8 +712,10 @@ public class DataManager{
                 this.username = username;
                 this.password = password;
                 this.id=id;
+                result=true;
             }else{
                 System.out.println("username or password was incorrect.");
+                result=false;
             }
 
             stmt.close();
@@ -725,7 +727,7 @@ public class DataManager{
             
         }
 
-        return username;
+        return result;
 
     }
 
@@ -849,6 +851,34 @@ public class DataManager{
         
         query  = String.format(query, owner,coowner);
         
+        Statement stmt; 
+        try{
+            
+            stmt = conn.createStatement(); 
+            stmt.executeUpdate(query);
+    
+            stmt.close();
+            
+
+        }catch(Exception  e){
+            System.err.format("ERROR: \n%s\n", e.getMessage());
+        }finally{
+            
+        }
+
+        
+    }
+
+
+    public void addNewRequest(String username,String amount,String comment, String image){
+        String query= "INSERT INTO requests(username,amount,comment,image,status) VALUES "+
+                      " ('%s','%s','%s','%s','pending');";                
+
+                      
+        query  = String.format(query, username,amount,comment,image);
+        System.out.println(query);
+        System.out.println(query);
+        System.out.println(query);
         Statement stmt; 
         try{
             

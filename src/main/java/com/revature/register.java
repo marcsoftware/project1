@@ -56,7 +56,8 @@ public class register extends HttpServlet {
 				DataManager session = new DataManager();
 				session.connect();
 				Boolean result = session.register(user,password);
-				System.out.println("logged in as: "+result);
+			
+			
 				
 		
 

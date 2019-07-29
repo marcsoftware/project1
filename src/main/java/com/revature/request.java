@@ -71,6 +71,7 @@ public class request extends HttpServlet {
 				String picture = request.getParameter("picture");
 				DataManager session = new DataManager();
 				session.connect();
+				session.addNewRequest(user.getValue(), amount, comment, picture);
 				//Boolean result = session.register(user,password);
 			
 		response.setContentType("text/html");

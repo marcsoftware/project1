@@ -25,10 +25,15 @@ public class login extends HttpServlet {
 			
          
       // Get an array of Cookies associated with this domain
-	  Cookie[] cookies = request.getCookies();
+	  
 	  
 		Cookie user=getCookie(request, "user");
-	
+		String current_user; 
+		try{
+			current_user= user.getValue();
+		}catch(Exception  e){
+			current_user=" ";
+		}
 		// set response headers
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
@@ -42,7 +47,7 @@ public class login extends HttpServlet {
 			  .append("			<title>login</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
+			  .append("			<p>:::"+current_user+"</p>\r\n")
 			  .append("		login:\n\r")
 			  .append("			<form action=\"login\" method=\"POST\">\r\n")
 			  .append("				name: \r\n")
@@ -62,14 +67,27 @@ public class login extends HttpServlet {
 				String user = request.getParameter("user");
 				String password = request.getParameter("password");
 				DataManager session = new DataManager();
-				session.connect();
+
 				
-				Cookie test = new Cookie("user", user);
-				test.setMaxAge(60*60*24);
-				response.addCookie( test );
-				 test = new Cookie("password", password);
-				test.setMaxAge(60*60*24);
-				response.addCookie( test );
+				session.connect();
+				Boolean result=session.login(user,password);
+				if(result){
+					Cookie test = new Cookie("user", user);
+					test.setMaxAge(60*60*24);
+					response.addCookie( test );
+					test = new Cookie("password", password);
+					test.setMaxAge(60*60*24);
+					response.addCookie( test );
+				}else{
+					Cookie test = new Cookie("user", ""); //delete cookie
+					test.setMaxAge(60*60*24);
+					response.addCookie( test );
+					test = new Cookie("password", "");
+					test.setMaxAge(60*60*24);
+					response.addCookie( test );
+					
+				}
+				System.out.println("----------------"+result);
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		
@@ -83,13 +101,13 @@ public class login extends HttpServlet {
 			  .append("		<body>\r\n");
 
 			  
-		if (user != null && !user.trim().isEmpty()) {
+		if (user != null && !user.trim().isEmpty() && result) {
 			writer.append("	Welcome " + user + ".\r\n");
 			writer.append("	----You are logged in.\r\n");
 		//	createSession( request,  response);
-			response.sendRedirect("/app/homepage");  
+			//response.sendRedirect("/app/homepage");  
 		} else {
-			writer.append("	some went wrong.\r\n");
+			writer.append("	You entered the wrong password.\r\n");
 		}
 		writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
