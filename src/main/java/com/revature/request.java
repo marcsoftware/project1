@@ -45,14 +45,14 @@ public class request extends HttpServlet {
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
 			  .append("		form:\n\r")
-			  .append("			<form action=\"submit\" method=\"POST\">\r\n")
+			  .append("			<form action=\"request\" method=\"POST\">\r\n")
 			  .append("				amount: \r\n")
 			  
 			  .append("				<input type=\"text\" name=\"amount\" />\r\n")
 			  .append("				comment: \r\n")
-			  .append("				<input type=\"test\" name=\"comment\" />\r\n")
+			  .append("				<input type=\"text\" name=\"comment\" />\r\n")
 			  .append("				picture: \r\n")
-			  .append("				<input type=\"test\" name=\"picture\" />\r\n")
+			  .append("				<input type=\"text\" name=\"picture\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
 			  .append("			</form>\r\n")
 			  .append("		</body>\r\n")
@@ -62,8 +62,16 @@ public class request extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-			
-			
+				Cookie[] cookies = request.getCookies();
+	  
+				Cookie user=getCookie(request, "user");
+
+				String amount = request.getParameter("amount");
+				String comment = request.getParameter("comment");
+				String picture = request.getParameter("picture");
+				DataManager session = new DataManager();
+				session.connect();
+				//Boolean result = session.register(user,password);
 			
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
@@ -73,7 +81,8 @@ public class request extends HttpServlet {
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
-			  .append("			<title>subbmitted</title>\r\n")
+			  .append("			<title>request was submitted</title>\r\n")
+			  .append("			<p>request:::"+user.getValue( )+":"+amount+ " :::</p>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n");
 

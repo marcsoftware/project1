@@ -58,10 +58,7 @@ public class register extends HttpServlet {
 				Boolean result = session.register(user,password);
 				System.out.println("logged in as: "+result);
 				
-				System.out.println("logged in as: "+result);
-				System.out.println("logged in as: "+result);
-				System.out.println("logged in as: "+result);
-				System.out.println("logged in as: "+result);
+		
 
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
