@@ -10,3 +10,4 @@
 psql -U postgres 
 none
  \ir src/main/resources/schema.sql
+ 

@@ -111,7 +111,7 @@ public class login extends HttpServlet {
 			HttpSession session=request.getSession();  
 			session.setAttribute("uname",n);  
 	
-			out.print("<a href='/app/submit'>apply</a>");  
+			out.print("<a href='/app/request'>apply</a>");  
 					
 			out.close();  
   

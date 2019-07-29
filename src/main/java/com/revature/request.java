@@ -12,7 +12,7 @@ import java.util.Scanner;
 
 
 
-public class submit extends HttpServlet {
+public class request extends HttpServlet {
 
 	private static final long serialVersionUID = -1641096228274971485L;
 
