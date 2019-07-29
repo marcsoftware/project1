@@ -26,7 +26,9 @@ public class login extends HttpServlet {
          
       // Get an array of Cookies associated with this domain
 	  Cookie[] cookies = request.getCookies();
-	  System.out.println("---------------"+cookies);
+	  
+		Cookie user=getCookie(request, "user");
+	
 		// set response headers
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
@@ -40,7 +42,7 @@ public class login extends HttpServlet {
 			  .append("			<title>login</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>:::"+cookies[0].getName( )+"------"+cookies[0].getValue( )+"</p>\r\n")
+			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
 			  .append("		login:\n\r")
 			  .append("			<form action=\"login\" method=\"POST\">\r\n")
 			  .append("				name: \r\n")
@@ -62,10 +64,10 @@ public class login extends HttpServlet {
 				DataManager session = new DataManager();
 				session.connect();
 				
-				Cookie test = new Cookie("user", "testname");
+				Cookie test = new Cookie("user", user);
 				test.setMaxAge(60*60*24);
 				response.addCookie( test );
-				 test = new Cookie("password", "testpass");
+				 test = new Cookie("password", password);
 				test.setMaxAge(60*60*24);
 				response.addCookie( test );
 		response.setContentType("text/html");
@@ -119,5 +121,15 @@ public class login extends HttpServlet {
    		   
 	}
 	  
-
+	public static Cookie getCookie(HttpServletRequest request, String name) {
+		Cookie[] cookies = request.getCookies();
+		if (cookies != null) {
+			for (Cookie cookie : cookies) {
+				if (cookie.getName().equals(name)) {
+					return cookie;
+				}
+			}
+		}
+		return null;
+	}
 }

@@ -92,6 +92,9 @@ public class register extends HttpServlet {
 	public void destroy(  ) {
 		
 	  }
+
+
+	  
 	  
 
 }
