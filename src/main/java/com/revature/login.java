@@ -105,7 +105,7 @@ public class login extends HttpServlet {
 			writer.append("	Welcome " + user + ".\r\n");
 			writer.append("	----You are logged in.\r\n");
 		//	createSession( request,  response);
-			//response.sendRedirect("/app/homepage");  
+			sresponse.sendRedirect("/app/homepage");  
 		} else {
 			writer.append("	You entered the wrong password.\r\n");
 		}
