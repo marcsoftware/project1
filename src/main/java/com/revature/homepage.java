@@ -39,7 +39,7 @@ public class homepage extends HttpServlet {
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
 			  
-			  .append("			<title>login</title>\r\n")
+			  .append("			<title>homepage</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")

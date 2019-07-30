@@ -6,7 +6,7 @@ import java.util.regex.*;
 import java.security.*;
 import java.math.BigInteger;
 
-
+import java.util.LinkedList; 
 
 public class DataManager{  
 
@@ -623,22 +623,18 @@ public class DataManager{
     }
 
 
-    public void listAccounts(){
-
-        //String query = "select * from bank_owners where owner_id='%s';";
-
-        String query = "SELECT * "+
-                       "FROM bank_owners "+
-                       "INNER JOIN bank "+
-                       "ON bank.account_number = bank_owners.account_number "+
-                       "where owner_id='%s' ;";
+    public  LinkedList<String>  listRequests(String username){
+        LinkedList<String> al=new LinkedList<String>();  
+        
+         
+        String query = "SELECT * FROM requests where username='%s' ";
 
                       
         Statement stmt; 
         try{
             
             stmt = conn.createStatement(); 
-            query  = String.format(query, this.id);
+            query  = String.format(query, username);
             
             ResultSet rs = stmt.executeQuery(query);
             ResultSetMetaData rsmd = rs.getMetaData();
@@ -650,9 +646,14 @@ public class DataManager{
                 
                 
                 
-                String account_number = rs.getString("account_number");
-                String balance = rs.getString("balance");
-                System.out.println(account_number+" : "+balance+ "\n");
+                String comment = rs.getString("comment");
+                String picture = rs.getString("image");
+                String status = rs.getString("status");
+                String amount = rs.getString("amount");
+                al.push(amount);
+                al.push(comment);
+                al.push( picture );
+                al.push(status);
             }
             System.out.println("----------------------------------");
             stmt.close();
@@ -664,7 +665,7 @@ public class DataManager{
             
         }
 
-        
+        return al;
     }
 
 

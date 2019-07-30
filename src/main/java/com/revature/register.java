@@ -44,6 +44,7 @@ public class register extends HttpServlet {
 			  .append("				<input type=\"password\" name=\"password\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
 			  .append("			</form>\r\n")
+			  .append("<a href='/app/'>login</a><br/>")
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}
@@ -69,7 +70,7 @@ public class register extends HttpServlet {
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
-			  .append("			<title>Welcome message</title>\r\n")
+			  .append("			<title>register</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n");
 

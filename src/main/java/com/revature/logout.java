@@ -40,13 +40,14 @@ public class logout extends HttpServlet {
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
 			  
-			  .append("			<title>login</title>\r\n")
+			  .append("			<title>logout</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  
 			  .append("			<p>you are logged out.</p><br/>")
 		
 			  .append("<a href='/app/'>login</a><br/>")
+			  .append("<a href='/app/register'>register</a><br/>")
 	
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");

@@ -4,7 +4,7 @@ import com.revature.dao.*;
 import java.io.*;  
 import javax.servlet.*;  
 import javax.servlet.http.*;  
-
+import java.util.LinkedList; 
 
 
 import java.util.Scanner;
@@ -21,29 +21,50 @@ public class view extends HttpServlet {
 				
 				
 				
-				
+				response.setContentType("text/html");
+		response.setCharacterEncoding("UTF-8");
 			
          
       // Get an array of Cookies associated with this domain
 	  Cookie[] cookies = request.getCookies();
 	  
 		Cookie user=getCookie(request, "user");
-	
-		// set response headers
-		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");
-		
-		// create HTML form
+
+		DataManager session = new DataManager();
+
+				
+				session.connect();
+				
+				LinkedList<String> result=session.listRequests(user.getValue());
+
+				// create HTML form
 		PrintWriter writer = response.getWriter();
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
 			  
-			  .append("			<title>login</title>\r\n")
+			  .append("			<title>view</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
-			  .append("			<p>this is the view</p>\r\n")
+			  .append("			<p>:::"+user.getValue( )+"</p>\r\n");
+		// Traditional for loop approach
+		for (int i = 0; i < result.size(); i=i+4) {
+			System.out.println(result.get(i));
+			writer.append("			<span id='cell'>"+result.get(i)+"</span>\r\n");
+			writer.append("			<span id='cell'>"+result.get(i+1)+"</span>\r\n");
+			writer.append("			<span id='cell'>"+result.get(i+2)+"</span>\r\n");
+			writer.append("			<span id='cell'>"+result.get(i+3)+"</span><br/>");
+		}
+	
+		writer.append("<br/><a href='/app/request'>request</a><br/>")
+			  .append("<a href='/app/view'>view</a><br/>")
+			  .append("<a href='/app/logout'>logout</a><br/>");
+		// set response headers
+		
+		
+		
+			  
+		writer.append("			<p>this is the view</p>\r\n")
 	
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");

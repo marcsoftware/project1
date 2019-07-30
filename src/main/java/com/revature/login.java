@@ -96,7 +96,7 @@ public class login extends HttpServlet {
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
-			  .append("			<title>logged in</title>\r\n")
+			  .append("			<title>login</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n");
 

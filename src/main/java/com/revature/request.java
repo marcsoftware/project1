@@ -40,7 +40,7 @@ public class request extends HttpServlet {
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
 			  
-			  .append("			<title>login</title>\r\n")
+			  .append("			<title>request</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
@@ -54,7 +54,10 @@ public class request extends HttpServlet {
 			  .append("				picture: \r\n")
 			  .append("				<input type=\"text\" name=\"picture\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
-			  .append("			</form>\r\n")
+			  .append("			</form>\r\n");
+			  writer.append("<br/><a href='/app/request'>request</a><br/>")
+			  .append("<a href='/app/view'>view</a><br/>")
+			  .append("<a href='/app/logout'>logout</a><br/>")
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}
@@ -83,11 +86,13 @@ public class request extends HttpServlet {
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
 			  .append("			<title>request was submitted</title>\r\n")
-			  .append("			<p>request:::"+user.getValue( )+":"+amount+ " :::</p>\r\n")
+			  
 			  .append("		</head>\r\n")
-			  .append("		<body>\r\n");
-
-	
+			  .append("		<body>\r\n")
+			  .append("			<p>Your request was submitted.</p>\r\n");
+			  writer.append("<br/><a href='/app/request'>request</a><br/>")
+			  .append("<a href='/app/view'>view</a><br/>")
+			  .append("<a href='/app/logout'>logout</a><br/>");
 		writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}	
