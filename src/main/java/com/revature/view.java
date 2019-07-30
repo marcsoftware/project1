@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 
 
-public class homepage extends HttpServlet {
+public class view extends HttpServlet {
 
 	private static final long serialVersionUID = -1641096228274971485L;
 
@@ -43,10 +43,7 @@ public class homepage extends HttpServlet {
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
-			  .append("			<p>this is the homepage</p><br/>")
-			  .append("<a href='/app/request'>request</a><br/>")
-			  .append("<a href='/app/view'>view</a><br/>")
-			  .append("<a href='/app/logout'>logout</a><br/>")
+			  .append("			<p>this is the view</p>\r\n")
 	
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");

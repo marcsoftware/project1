@@ -11,7 +11,7 @@ import java.util.Scanner;
 
 
 
-public class homepage extends HttpServlet {
+public class logout extends HttpServlet {
 
 	private static final long serialVersionUID = -1641096228274971485L;
 
@@ -23,13 +23,14 @@ public class homepage extends HttpServlet {
 				
 				
 			
-         
-      // Get an array of Cookies associated with this domain
-	  Cookie[] cookies = request.getCookies();
-	  
-		Cookie user=getCookie(request, "user");
-	
-		// set response headers
+				Cookie test = new Cookie("user", "");
+				test.setMaxAge(60*60*24);
+				response.addCookie( test );
+				test = new Cookie("password", "");
+				test.setMaxAge(60*60*24);
+				response.addCookie( test );
+
+				// set response headers
 		response.setContentType("text/html");
 		response.setCharacterEncoding("UTF-8");
 		
@@ -42,14 +43,14 @@ public class homepage extends HttpServlet {
 			  .append("			<title>login</title>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
-			  .append("			<p>this is the homepage</p><br/>")
-			  .append("<a href='/app/request'>request</a><br/>")
-			  .append("<a href='/app/view'>view</a><br/>")
-			  .append("<a href='/app/logout'>logout</a><br/>")
+			  
+			  .append("			<p>you are logged out.</p><br/>")
+		
+			  .append("<a href='/app/'>login</a><br/>")
 	
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");
+
 	}
 
 
@@ -60,26 +61,7 @@ public class homepage extends HttpServlet {
 	}
 
 
-	public void createSession(HttpServletRequest request, HttpServletResponse response){
-		try{  
-			response.setContentType("text/html");  
-			PrintWriter out = response.getWriter();  
-			
-			String n=request.getParameter("user");  
-			out.print("Welcome "+n);  
-			
-			HttpSession session=request.getSession();  
-			session.setAttribute("uname",n);  
-	
-			out.print("<a href='/app/request'>apply</a>");  
-					
-			out.close();  
-  
-        }catch(Exception e){
-			System.out.println(e);
-		}  
-   		   
-	}
+
 	  
 	public static Cookie getCookie(HttpServletRequest request, String name) {
 		Cookie[] cookies = request.getCookies();
