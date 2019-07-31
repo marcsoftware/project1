@@ -10,7 +10,7 @@ CREATE TABLE user_accounts(
   
 );
 
-insert into user_accounts (username,password,rank) values ("admin","admin","admin");
+insert into user_accounts (username,password,rank) values('admin','97e1e59c0375e0f55c10d4314db20466','admin');
 CREATE TABLE requests(
    id serial,
    username VARCHAR (50) ,
