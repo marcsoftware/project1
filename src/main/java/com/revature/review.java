@@ -44,27 +44,37 @@ public class review extends HttpServlet {
 			  .append("		<head>\r\n")
 			  
 			  .append("			<title>review</title>\r\n")
-			  .append("<style>#cell{width: 100%;display: inline-block;text-align:right;}</style>\r\n")
+			  .append("<style>table,th,td{border: 1px solid black;}td{width:10%;}</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n");
 
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
+		writer.append("<table style='width:100%'>");
+		
+		writer.append("<tr>");
+		writer.append("<th>-</th>");
+		writer.append("<th>name</th>");
+		
+		writer.append("<th>picture</th>");
+		writer.append("<th>comment</th>");
+
+		writer.append("</tr>");
 		for (int i = 0; i < result.size(); i=i+6) {
 			System.out.println(result.get(i));
-			writer.append("<table style='width:100%'>");
+		
 			writer.append("<tr>");
    
 			writer.append("<td>");
-			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='yes'> yes");
-			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='no'> no");
-			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='pending'> pending	 \r\n");
+			writer.append("<input type='radio' name='"+result.get(i)+"' value='yes'> yes");
+			writer.append("<input type='radio' name='"+result.get(i)+"' value='no'> no");
+			writer.append("<input type='radio' name='"+result.get(i)+"' value='pending'> pending");
 			writer.append("</td>");
-			writer.append("			<td id='cell'>"+result.get(i+1)+"</td>");
-			writer.append("			<td id='cell'>"+result.get(i+2)+"</td>");
-			writer.append("			<td id='cell'>"+result.get(i+3)+"</td>");
-			writer.append("			<td id='cell'>"+result.get(i+4)+"</td>");
+			writer.append("<td id='cell'>"+result.get(i+1)+"</td>");
+			
+			writer.append("<td id='cell'>"+result.get(i+3)+"</td>");
+			writer.append("<td id='cell'>"+result.get(i+4)+"</td>");
 			writer.append("</tr>");
 		}
 
