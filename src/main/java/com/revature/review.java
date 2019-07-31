@@ -44,6 +44,7 @@ public class review extends HttpServlet {
 			  .append("		<head>\r\n")
 			  
 			  .append("			<title>review</title>\r\n")
+			  .append("<style>#cell{width: 10%;display: inline-block;text-align:right;}</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n");
