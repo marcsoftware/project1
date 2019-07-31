@@ -735,6 +735,27 @@ public class DataManager{
         return al;
     }
 
+    public String secure(String password){
+         //
+         String data = password;
+          
+         MessageDigest messageDigest;
+         try {
+             messageDigest = MessageDigest.getInstance("MD5");
+             messageDigest.update(data.getBytes());
+             byte[] messageDigestMD5 = messageDigest.digest();
+             StringBuffer stringBuffer = new StringBuffer();
+             for (byte bytes : messageDigestMD5) {
+                 stringBuffer.append(String.format("%02x", bytes & 0xff));
+             }
+  
+             password=stringBuffer.toString();
+         } catch (NoSuchAlgorithmException exception) {
+             // TODO Auto-generated catch block
+             exception.printStackTrace();
+         }
+        return password;
+    }
 
     public Boolean login(String username,String password,String rank){
             Boolean result=false;
@@ -1096,6 +1117,46 @@ public class DataManager{
         }
         
         return result;
+
+    }
+
+
+    public String getRank(String username,String password){
+        password=secure(password);
+        String rank = "";
+        String query = "select rank from user_accounts where username='%s' and password='%s'"; //TODO change to prepared statment
+        query  = String.format(query, username,password);
+        Statement stmt; 
+        Boolean result=false;
+        
+        try{
+            
+            stmt = conn.createStatement(); 
+            ResultSet rs = stmt.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            
+        
+            
+            if (rs.next()) {
+              
+                 rank = rs.getString("rank");
+   
+            }else{
+                rank="none";
+                
+            }
+
+            stmt.close();
+            rs.close();
+
+        }catch(Exception  e){
+            System.err.format("ERROR: \n%s\n", e.getMessage());
+        }finally{
+            
+        }
+        
+        return rank;
 
     }
 

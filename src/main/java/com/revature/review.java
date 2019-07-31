@@ -29,25 +29,37 @@ public class review extends HttpServlet {
 	  Cookie[] cookies = request.getCookies();
 	  
 		Cookie user=getCookie(request, "user");
-
+		Cookie password=getCookie(request, "password");		
 		DataManager session = new DataManager();
 
-				
+		PrintWriter writer = response.getWriter();
+		writer.append("<!DOCTYPE html>\r\n")
+		.append("<html>\r\n")
+		.append("		<head>\r\n");
+		
 				session.connect();
-				
+				String rank=session.getRank(user.getValue(), password.getValue());
+				if(!rank.equals("admin")){
+					writer.append("			<title>review</title>\r\n")
+					.append("		</head>\r\n")
+					.append("		<body>\r\n")
+					.append("<p>You are not an admin.</p>\r\n")
+					.append("<a href='/app/homepage'>home</a><br/>")
+					.append("		</body>\r\n")
+					.append("</html>\r\n");
+			  		
+					return;
+				}
 				LinkedList<String> result=session.listStatus("pending");
 
 				// create HTML form
-		PrintWriter writer = response.getWriter();
-		writer.append("<!DOCTYPE html>\r\n")
-			  .append("<html>\r\n")
-			  .append("		<head>\r\n")
-			  
-			  .append("			<title>review</title>\r\n")
+		
+	
+			  writer.append("			<title>review</title>\r\n")
 			  .append("<style>#customers { font-family: 'Trebuchet MS, Arial, Helvetica, sans-serif'; border-collapse: collapse; width: 100%; } #customers td, #customers th { border: 1px solid #ddd; padding: 8px; width:10%} #customers tr:nth-child(even){background-color: #f2f2f2;} #customers tr:hover {background-color: #ddd;} #customers th { padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white; }</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+"</p>\r\n");
+			  .append("			<p>:::"+user.getValue( )+rank+"</p>\r\n");
 
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
