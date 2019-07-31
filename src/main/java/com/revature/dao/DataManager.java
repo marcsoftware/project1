@@ -262,6 +262,21 @@ public class DataManager{
         
     }
 
+
+    public void updateStatus(String id, String value){
+       
+        //
+         String query= "UPDATE requests "+
+            "SET status = '%s'  "+
+            "WHERE id=%s ";        
+
+            
+            query = String.format(query,value ,id);
+        execute(query);
+
+        
+    }
+
     public void transfer(String[] args){
         if(args.length<4){
             System.out.println("failed: you are missing args.");

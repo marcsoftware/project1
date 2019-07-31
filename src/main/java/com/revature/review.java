@@ -106,6 +106,12 @@ public void handleRequest(HttpServletRequest req, HttpServletResponse res) throw
 			String paramValue = paramValues[i];
 			out.write(" is " + paramValue);
 			out.write(" : ");
+
+			DataManager session = new DataManager();
+
+				
+			session.connect();
+			session.updateStatus(paramName, paramValue);
 		}
 
 	}
@@ -113,6 +119,7 @@ public void handleRequest(HttpServletRequest req, HttpServletResponse res) throw
 	out.close();
 
 }
+
 
 	public void createSession(HttpServletRequest request, HttpServletResponse response){
 		try{  
