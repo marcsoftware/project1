@@ -55,7 +55,14 @@ public class login extends HttpServlet {
 			  .append("				<input type=\"text\" name=\"user\" />\r\n")
 			  .append("				password: \r\n")
 			  .append("				<input type=\"password\" name=\"password\" />\r\n")
-			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
+			  
+			  
+
+			  .append("	<select name='rank'>")
+			  .append("	<option value='volvo'>employee</option>")
+			  .append("	<option value='saab'>admin</option>")
+			  .append("</select>")
+			  .append("				<input type=\"submit\" value=\"Submit\" />")
 			  .append("			</form>\r\n")
 			  .append("<a href='/app/register'>register</a><br/>")
 			  .append("		</body>\r\n")

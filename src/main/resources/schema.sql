@@ -16,8 +16,6 @@ CREATE TABLE requests(
    amount VARCHAR (50) ,
    comment text ,
    image VARCHAR (50) ,
-   status VARCHAR (50) DEFAULT "pending",
+   status VARCHAR (50),
     FOREIGN KEY (username) REFERENCES user_accounts(username)
-   
-  
 );
