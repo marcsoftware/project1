@@ -47,6 +47,7 @@ public class homepage extends HttpServlet {
 			  .append("<a href='/app/request'>request</a><br/>")
 			  .append("<a href='/app/view'>view</a><br/>")
 			  .append("<a href='/app/logout'>logout</a><br/>")
+			  .append("<a href='/app/review'>review</a><br/>")
 	
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");

@@ -40,6 +40,17 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>review</servlet-name>
+		<servlet-class>com.revature.review</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>review</servlet-name>
+		<url-pattern>/review</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>com.revature.logout</servlet-class>
 		<load-on-startup>1</load-on-startup>
