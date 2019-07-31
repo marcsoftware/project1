@@ -671,6 +671,56 @@ public class DataManager{
     }
 
 
+    public  LinkedList<String>  listStatus(String state){
+        LinkedList<String> al=new LinkedList<String>();  
+        
+         
+        String query = "SELECT * FROM requests where status='%s' ";
+
+                      
+        Statement stmt; 
+        try{
+            
+            stmt = conn.createStatement(); 
+            query  = String.format(query, state);
+            
+            ResultSet rs = stmt.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            
+           
+            System.out.println("----------------------------------");
+            while (rs.next()) {
+                
+                
+                String id = rs.getString("id");
+                String comment = rs.getString("comment");
+                String picture = rs.getString("image");
+                String status = rs.getString("status");
+                String amount = rs.getString("amount");
+                String username = rs.getString("username");
+                
+                al.push(amount);
+                al.push(comment);
+                al.push( picture );
+                al.push(status);
+                al.push(username);
+                al.push(id);
+            }
+            System.out.println("----------------------------------");
+            stmt.close();
+            rs.close();
+
+        }catch(Exception  e){
+            System.err.format("ERROR: \n%s\n", e.getMessage());
+        }finally{
+            
+        }
+
+        return al;
+    }
+
+
     public Boolean login(String username,String password){
             Boolean result=false;
           //

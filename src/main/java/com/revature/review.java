@@ -35,7 +35,7 @@ public class review extends HttpServlet {
 				
 				session.connect();
 				
-				LinkedList<String> result=session.listRequests(user.getValue());
+				LinkedList<String> result=session.listStatus("pending");
 
 				// create HTML form
 		PrintWriter writer = response.getWriter();
@@ -50,14 +50,15 @@ public class review extends HttpServlet {
 
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
-		for (int i = 0; i < result.size(); i=i+5) {
+		for (int i = 0; i < result.size(); i=i+6) {
 			System.out.println(result.get(i));
 			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='yes'> yes");
 			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='no'> no");
 			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='pending'> pending	 \r\n");
 			writer.append("			<span id='cell'>"+result.get(i+1)+"</span>\r\n");
 			writer.append("			<span id='cell'>"+result.get(i+2)+"</span>\r\n");
-			writer.append("			<span id='cell'>"+result.get(i+3)+"</span><br/>");
+			writer.append("			<span id='cell'>"+result.get(i+3)+"</span>\r\n");
+			writer.append("			<span id='cell'>"+result.get(i+4)+"</span><br/>");
 		}
 		writer.append("	<input type='submit' value='save'/>  </form>  ");	  
 		writer.append("<br/><a href='/app/request'>request</a><br/>")
