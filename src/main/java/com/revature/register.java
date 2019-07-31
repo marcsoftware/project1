@@ -78,6 +78,7 @@ public class register extends HttpServlet {
 		if (user != null && !user.trim().isEmpty() && result) {
 			writer.append("	Welcome " + user + ".\r\n");
 			writer.append("	You have regsiter a new account\r\n");
+			writer.append("<a href='/app/login'>login</a><br/>");
 		}else if(!result){
 			writer.append("	That user already exsists.\r\n");
 		} else {

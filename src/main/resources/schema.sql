@@ -11,7 +11,7 @@ CREATE TABLE user_accounts(
 );
 
 CREATE TABLE requests(
-   
+   id serial,
    username VARCHAR (50) ,
    amount VARCHAR (50) ,
    comment text ,
