@@ -29,16 +29,28 @@ public class view extends HttpServlet {
 	  Cookie[] cookies = request.getCookies();
 	  
 		Cookie user=getCookie(request, "user");
-
+		Cookie password=getCookie(request, "password");		
+		PrintWriter writer = response.getWriter();
 		DataManager session = new DataManager();
-
-				
-				session.connect();
+		session.connect();
+		String rank=session.getRank(user.getValue(), password.getValue());
+		if(!rank.equals("employee")){
+		
+			writer.append("		</head>\r\n")
+			.append("		<body>\r\n")
+			.append("<p>You do not have permission to view this page.</p>\r\n")
+			.append("<a href='/app/homepage'>home</a><br/>")
+			.append("		</body>\r\n")
+			.append("</html>\r\n");
+			  
+			return;
+		}
+			
 				
 				LinkedList<String> result=session.listRequests(user.getValue());
 
 				// create HTML form
-		PrintWriter writer = response.getWriter();
+	
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
