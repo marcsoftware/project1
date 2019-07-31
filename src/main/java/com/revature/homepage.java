@@ -44,26 +44,26 @@ public class homepage extends HttpServlet {
 			   writer.append("		</head>\r\n");
 				writer.append("		<body>\r\n");
 		if(rank.equals("admin")){
-		
-			
-		
-			writer.append("<p>admin.</p>\r\n")
-			.append("<a href='/app/homepage'>home</a><br/>");
-			
-			  
-			
+
+			writer.append("<p>admin homepage.</p>\r\n");
+			writer.append("<a href='/app/review'>review</a><br/>");
+			writer.append("<a href='/app/logout'>logout</a><br/>");
+	
 		}else if(rank.equals("employee")){
 		
 			
-			writer.append("<p>employee.</p>\r\n")
-			.append("<a href='/app/homepage'>home</a><br/>");
+			writer.append("<p>employee homepage.</p>\r\n");
+			writer.append("<a href='/app/request'>request</a><br/>");
+			writer.append("<a href='/app/view'>request history</a><br/>");
+			writer.append("<a href='/app/logout'>logout</a><br/>");
 		
 			  
 			
 		}else{
 			
-			writer.append("<p>you are not logged in</p>\r\n")
-			.append("<a href='/app/homepage'>home</a><br/>");
+			writer.append("<p>you are not logged in</p>");
+			writer.append("<a href='/app/'>login</a><br/>");
+			writer.append("<a href='/app/register'>register</a><br/>");
 		
 		}
 
@@ -75,14 +75,9 @@ public class homepage extends HttpServlet {
 	
 			  
 			  
-			  writer.append("			<p>:::"+user.getValue( )+"</p>\r\n")
-			  .append("			<p>this is the homepage</p><br/>")
-			  .append("<a href='/app/request'>request</a><br/>")
-			  .append("<a href='/app/view'>view</a><br/>")
-			  .append("<a href='/app/logout'>logout</a><br/>")
-			  .append("<a href='/app/review'>review</a><br/>")
-	
-			  .append("		</body>\r\n")
+			  
+			  
+			  writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}
 
