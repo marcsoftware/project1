@@ -736,7 +736,7 @@ public class DataManager{
     }
 
 
-    public Boolean login(String username,String password){
+    public Boolean login(String username,String password,String rank){
             Boolean result=false;
           //
           String data = password;

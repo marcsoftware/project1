@@ -59,8 +59,8 @@ public class login extends HttpServlet {
 			  
 
 			  .append("	<select name='rank'>")
-			  .append("	<option value='volvo'>employee</option>")
-			  .append("	<option value='saab'>admin</option>")
+			  .append("	<option value='employee'>employee</option>")
+			  .append("	<option value='admin'>admin</option>")
 			  .append("</select>")
 			  .append("				<input type=\"submit\" value=\"Submit\" />")
 			  .append("			</form>\r\n")
@@ -74,11 +74,12 @@ public class login extends HttpServlet {
 			throws ServletException, IOException {
 				String user = request.getParameter("user");
 				String password = request.getParameter("password");
+				String rank = request.getParameter("rank");
 				DataManager session = new DataManager();
 
 				
 				session.connect();
-				Boolean result=session.login(user,password);
+				Boolean result=session.login(user,password,rank);
 				if(result){
 					Cookie test = new Cookie("user", user);
 					test.setMaxAge(60*60*24);
