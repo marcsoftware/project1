@@ -50,11 +50,11 @@ public class review extends HttpServlet {
 
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
-		for (int i = 0; i < result.size(); i=i+4) {
+		for (int i = 0; i < result.size(); i=i+5) {
 			System.out.println(result.get(i));
-			writer.append("			 <input type='radio' name='"+i+"' value='yes'> yes");
-			writer.append("			 <input type='radio' name='"+i+"' value='no'> no");
-			writer.append("			 <input type='radio' name='"+i+"' value='pending'> pending	 \r\n");
+			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='yes'> yes");
+			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='no'> no");
+			writer.append("			 <input type='radio' name='"+result.get(i)+"' value='pending'> pending	 \r\n");
 			writer.append("			<span id='cell'>"+result.get(i+1)+"</span>\r\n");
 			writer.append("			<span id='cell'>"+result.get(i+2)+"</span>\r\n");
 			writer.append("			<span id='cell'>"+result.get(i+3)+"</span><br/>");

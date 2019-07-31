@@ -645,15 +645,17 @@ public class DataManager{
             while (rs.next()) {
                 
                 
-                
+                String id = rs.getString("id");
                 String comment = rs.getString("comment");
                 String picture = rs.getString("image");
                 String status = rs.getString("status");
                 String amount = rs.getString("amount");
+                
                 al.push(amount);
                 al.push(comment);
                 al.push( picture );
                 al.push(status);
+                al.push(id);
             }
             System.out.println("----------------------------------");
             stmt.close();

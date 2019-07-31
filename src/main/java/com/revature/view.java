@@ -48,12 +48,13 @@ public class view extends HttpServlet {
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n");
 		// Traditional for loop approach
-		for (int i = 0; i < result.size(); i=i+4) {
+		for (int i = 0; i < result.size(); i=i+5) {
 			System.out.println(result.get(i));
 			writer.append("			<span id='cell'>"+result.get(i)+"</span>\r\n");
 			writer.append("			<span id='cell'>"+result.get(i+1)+"</span>\r\n");
 			writer.append("			<span id='cell'>"+result.get(i+2)+"</span>\r\n");
-			writer.append("			<span id='cell'>"+result.get(i+3)+"</span><br/>");
+			writer.append("			<span id='cell'>"+result.get(i+3)+"</span>");
+			writer.append("			<span id='cell'>"+result.get(i+4)+"</span><br/>");
 		}
 	
 		writer.append("<br/><a href='/app/request'>request</a><br/>")
