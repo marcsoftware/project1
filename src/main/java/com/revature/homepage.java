@@ -28,21 +28,54 @@ public class homepage extends HttpServlet {
 	  Cookie[] cookies = request.getCookies();
 	  
 		Cookie user=getCookie(request, "user");
+
+		
+		Cookie password=getCookie(request, "password");		
+		PrintWriter writer = response.getWriter();
+		DataManager session = new DataManager();
+		session.connect();
+		String rank=session.getRank(user.getValue(), password.getValue());
+
+		writer.append("<!DOCTYPE html>\r\n");
+		writer.append("<html>\r\n")
+			   .append("		<head>\r\n")
+			   
+			   .append("			<title>homepage</title>\r\n");
+			   writer.append("		</head>\r\n");
+				writer.append("		<body>\r\n");
+		if(rank.equals("admin")){
+		
+			
+		
+			writer.append("<p>admin.</p>\r\n")
+			.append("<a href='/app/homepage'>home</a><br/>");
+			
+			  
+			
+		}else if(rank.equals("employee")){
+		
+			
+			writer.append("<p>employee.</p>\r\n")
+			.append("<a href='/app/homepage'>home</a><br/>");
+		
+			  
+			
+		}else{
+			
+			writer.append("<p>you are not logged in</p>\r\n")
+			.append("<a href='/app/homepage'>home</a><br/>");
+		
+		}
+
 	
-		// set response headers
-		response.setContentType("text/html");
-		response.setCharacterEncoding("UTF-8");
+	
 		
 		// create HTML form
-		PrintWriter writer = response.getWriter();
-		writer.append("<!DOCTYPE html>\r\n")
-			  .append("<html>\r\n")
-			  .append("		<head>\r\n")
+		
+	
 			  
-			  .append("			<title>homepage</title>\r\n")
-			  .append("		</head>\r\n")
-			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
+			  
+			  writer.append("			<p>:::"+user.getValue( )+"</p>\r\n")
 			  .append("			<p>this is the homepage</p><br/>")
 			  .append("<a href='/app/request'>request</a><br/>")
 			  .append("<a href='/app/view'>view</a><br/>")
