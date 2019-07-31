@@ -758,8 +758,8 @@ public class DataManager{
           }
           //
 
-        String query = "select user_id from user_accounts where username='%s' and password='%s'"; //TODO change to prepared statment
-        query  = String.format(query, username,password);
+        String query = "select user_id from user_accounts where username='%s' and password='%s' and rank='%s'"; //TODO change to prepared statment
+        query  = String.format(query, username,password,rank);
         Statement stmt; 
         try{
             
@@ -891,7 +891,7 @@ public class DataManager{
     }
 
     public void addNewUser(String username,String password){
-        String query = " insert into user_accounts(username,password) values ('%s','%s');"; //TODO change to prepared statment
+        String query = " insert into user_accounts(username,password,rank) values ('%s','%s','employee');"; //TODO change to prepared statment
         query  = String.format(query, username,password);
         Statement stmt; 
         try{

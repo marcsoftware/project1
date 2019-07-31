@@ -6,7 +6,7 @@ CREATE TABLE user_accounts(
    user_id serial PRIMARY KEY,
    username VARCHAR (50) UNIQUE NOT NULL,
    password VARCHAR (50) NOT NULL,
-   status varchar(20)
+   rank varchar(20)
   
 );
 

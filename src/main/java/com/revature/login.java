@@ -117,6 +117,7 @@ public class login extends HttpServlet {
 			response.sendRedirect("/app/homepage");  
 		} else {
 			writer.append("	You entered the wrong password.\r\n");
+			writer.append("<a href='/app/login'>login</a><br/>");
 		}
 		writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
