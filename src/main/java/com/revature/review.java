@@ -44,14 +44,14 @@ public class review extends HttpServlet {
 			  .append("		<head>\r\n")
 			  
 			  .append("			<title>review</title>\r\n")
-			  .append("<style>table,th,td{border: 1px solid black;}td{width:10%;}</style>\r\n")
+			  .append("<style>#customers { font-family: 'Trebuchet MS, Arial, Helvetica, sans-serif'; border-collapse: collapse; width: 100%; } #customers td, #customers th { border: 1px solid #ddd; padding: 8px; width:10%} #customers tr:nth-child(even){background-color: #f2f2f2;} #customers tr:hover {background-color: #ddd;} #customers th { padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white; }</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n");
 
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
-		writer.append("<table style='width:100%'>");
+		writer.append("<table id='customers' style='width:100%'>");
 		
 		writer.append("<tr>");
 		writer.append("<th>-</th>");
@@ -59,6 +59,7 @@ public class review extends HttpServlet {
 		
 		writer.append("<th>picture</th>");
 		writer.append("<th>comment</th>");
+		writer.append("<th>amount</th>");
 
 		writer.append("</tr>");
 		for (int i = 0; i < result.size(); i=i+6) {
@@ -75,6 +76,7 @@ public class review extends HttpServlet {
 			
 			writer.append("<td id='cell'>"+result.get(i+3)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+4)+"</td>");
+			writer.append("<td id='cell'>"+result.get(i+5)+"</td>");
 			writer.append("</tr>");
 		}
 
