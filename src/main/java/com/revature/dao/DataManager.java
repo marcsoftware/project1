@@ -748,6 +748,56 @@ public class DataManager{
         return al;
     }
 
+
+    public  LinkedList<String>  listAllEmployees(){
+        LinkedList<String> al=new LinkedList<String>();  
+        
+         
+        String query = "SELECT * FROM user_accounts  ";
+
+        
+                      
+        Statement stmt; 
+        try{
+            
+            stmt = conn.createStatement(); 
+            query  = String.format(query);
+            
+            ResultSet rs = stmt.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            
+           
+            System.out.println("----------------------------------");
+            while (rs.next()) {
+                
+                
+                
+                String rank = rs.getString("rank");    
+                String username = rs.getString("username");
+                String realname = rs.getString("realname");
+                String email = rs.getString("email");
+
+                al.push(username);
+                al.push(realname);
+                al.push(email);
+                al.push( rank );
+              
+               
+            }
+            System.out.println("----------------------------------");
+            stmt.close();
+            rs.close();
+
+        }catch(Exception  e){
+            System.err.format("ERROR: \n%s\n", e.getMessage());
+        }finally{
+            
+        }
+
+        return al;
+    }
+
     public String secure(String password){
          //
          String data = password;

@@ -24,3 +24,7 @@ CREATE TABLE requests(
    manager VARCHAR (50),
     FOREIGN KEY (username) REFERENCES user_accounts(username)
 );
+
+
+insert into user_accounts (username,password,rank,realname,email) 
+values('bob','97e1e59c0375e0f55c10d4314db20466','employee','bobby durin', 'bobbyduring@gmail.com');
