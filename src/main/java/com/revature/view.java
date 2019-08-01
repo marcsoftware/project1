@@ -59,7 +59,7 @@ public class view extends HttpServlet {
 			  .append("<style>#customers { font-family: 'Trebuchet MS, Arial, Helvetica, sans-serif'; border-collapse: collapse; width: 100%; } #customers td, #customers th { border: 1px solid #ddd; padding: 8px; width:10%} #customers tr:nth-child(even){background-color: #f2f2f2;} #customers tr:hover {background-color: #ddd;} #customers th { padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white; }</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+"</p>\r\n");
+			  .append("			<p>"+user.getValue( )+"</p> view all\r\n");
 		// Traditional for loop approach
 		writer.append("<table id='customers' style='width:100%'>");
 		writer.append("<tr>");
@@ -91,7 +91,9 @@ public class view extends HttpServlet {
 	
 		writer.append("</table>");
 		writer.append("<br/><a href='/app/request'>request</a><br/>")
-			  .append("<a href='/app/view'>view</a><br/>")
+			  .append("view (")
+			  .append("<a href='/app/viewPending'>Pending</a > ")
+			  .append("| <a href='/app/viewResolved'>Resolved</a>) <br/>")
 			  .append("<a href='/app/logout'>logout</a><br/>");
 		// set response headers
 		
