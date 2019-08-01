@@ -48,6 +48,7 @@ public class homepage extends HttpServlet {
 			writer.append("<p>manager homepage.</p>\r\n");
 			writer.append("<a href='/app/review'>review</a><br/>");
 			writer.append("<a href='/app/reviewResolved'>Resolved</a><br/>");
+			writer.append("<a href='/app/reviewInfo'>list workers</a><br/>");
 			writer.append("<a href='/app/logout'>logout</a><br/>");
 	
 		}else if(rank.equals("employee")){

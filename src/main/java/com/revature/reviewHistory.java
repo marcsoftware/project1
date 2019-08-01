@@ -107,14 +107,15 @@ public class reviewHistory extends HttpServlet {
 		writer.append("	<input type='submit' value='save'/>  </form>  ");	
 		writer.append("<a href='/app/review'>review</a><br/>");
 			writer.append(" Resolved <br/>"); 
+
+			
+			writer.append("<a href='/app/reviewResolved'>Resolved</a><br/>");
+			writer.append("<a href='/app/reviewInfo'>list workers</a><br/>");
+			
+
 		writer.append("<a href='/app/logout'>logout</a><br/>");
 		// set response headers
-		
-		
-		
-			  
 		writer.append("			<p>this is the view</p>\r\n")
-	
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}

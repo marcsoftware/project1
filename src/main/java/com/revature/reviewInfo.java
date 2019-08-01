@@ -73,7 +73,7 @@ public class reviewInfo extends HttpServlet {
 		writer.append("<th>status</th>");
 	
 		writer.append("</tr>");
-		for (int i = 0; i < result.size(); i=i+5) {
+		for (int i = 0; i < result.size(); i=i+4) {
 			
 		
 			writer.append("<tr>");
@@ -86,9 +86,18 @@ public class reviewInfo extends HttpServlet {
 		}
 
 		writer.append("</table>");
+
+		
+
 		writer.append("	<input type='submit' value='save'/>  </form>  ");	
 		writer.append("<a href='/app/review'>review</a><br/>");
 			writer.append(" Resolved <br/>"); 
+
+			
+			writer.append("<a href='/app/reviewResolved'>Resolved</a><br/>");
+			
+			
+
 		writer.append("<a href='/app/logout'>logout</a><br/>");
 		// set response headers
 		
@@ -99,6 +108,7 @@ public class reviewInfo extends HttpServlet {
 	
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");
+			
 	}
 
 
@@ -108,70 +118,8 @@ public class reviewInfo extends HttpServlet {
 		
 	}
 
-public void doPost(HttpServletRequest request, HttpServletResponse response)  
-		throws ServletException, IOException {  
-			handleRequest(request, response);
-			
-}
 
-public void handleRequest(HttpServletRequest req, HttpServletResponse res) throws IOException {
- 
-	PrintWriter out = res.getWriter();
-	res.setContentType("text/html");
-
-
-	Cookie[] cookies = req.getCookies();
-	  
-		Cookie user=getCookie(req, "user");
-
-	Enumeration<String> parameterNames = req.getParameterNames();
-
-	while (parameterNames.hasMoreElements()) {
-
-		String paramName = parameterNames.nextElement();
-		//out.write(paramName);
-		
-
-		String[] paramValues = req.getParameterValues(paramName);
-		for (int i = 0; i < paramValues.length; i++) {
-			String paramValue = paramValues[i];
-			//out.write(" is " + paramValue);
-			//out.write(" : ");
-
-			DataManager session = new DataManager();
-
-				
-			session.connect();
-			session.updateStatus(paramName, paramValue, user.getValue());
-		}
-		out.write("work was saved. <a href='/app/review'>review</a><br/>");
-	}
-
-	out.close();
-
-}
-
-
-	public void createSession(HttpServletRequest request, HttpServletResponse response){
-		try{  
-			response.setContentType("text/html");  
-			PrintWriter out = response.getWriter();  
-			
-			String n=request.getParameter("user");  
-			out.print("Welcome "+n);  
-			
-			HttpSession session=request.getSession();  
-			session.setAttribute("uname",n);  
 	
-			out.print("<a href='/app/request'>apply</a>");  
-					
-			out.close();  
-  
-        }catch(Exception e){
-			System.out.println(e);
-		}  
-   		   
-	}
 	  
 	public static Cookie getCookie(HttpServletRequest request, String name) {
 		Cookie[] cookies = request.getCookies();
