@@ -66,29 +66,32 @@ public class reviewResolved extends HttpServlet {
 		writer.append("<table id='customers' style='width:100%'>");
 		
 		writer.append("<tr>");
-		writer.append("<th>-</th>");
+		writer.append("<th>reference#</th>");
 		writer.append("<th>name</th>");
 		
 		writer.append("<th>picture</th>");
 		writer.append("<th>comment</th>");
 		writer.append("<th>amount</th>");
-
+		writer.append("<th>reviewed by</th>");
+        writer.append("<th>response</th>");
 		writer.append("</tr>");
-		for (int i = 0; i < result.size(); i=i+6) {
+		for (int i = 0; i < result.size(); i=i+7) {
 			System.out.println(result.get(i));
 		
 			writer.append("<tr>");
    
 			writer.append("<td>");
-			writer.append("<input type='radio' name='"+result.get(i)+"' value='yes'> yes");
-			writer.append("<input type='radio' name='"+result.get(i)+"' value='no'> no");
-			writer.append("<input type='radio' name='"+result.get(i)+"' value='pending'> pending");
+			
+			writer.append(result.get(i));
+			
 			writer.append("</td>");
 			writer.append("<td id='cell'>"+result.get(i+1)+"</td>");
 			
 			writer.append("<td id='cell'>"+result.get(i+3)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+4)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+5)+"</td>");
+			writer.append("<td id='cell'>"+result.get(i+6)+"</td>");
+			writer.append("<td id='cell'>"+result.get(i+2)+"</td>");
 			writer.append("</tr>");
 		}
 

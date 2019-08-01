@@ -74,7 +74,7 @@ public class review extends HttpServlet {
 		writer.append("<th>amount</th>");
 
 		writer.append("</tr>");
-		for (int i = 0; i < result.size(); i=i+6) {
+		for (int i = 0; i < result.size(); i=i+7) {
 			System.out.println(result.get(i));
 		
 			writer.append("<tr>");
@@ -93,10 +93,12 @@ public class review extends HttpServlet {
 		}
 
 		writer.append("</table>");
-		writer.append("	<input type='submit' value='save'/>  </form>  ");	
+		writer.append("	<input type='submit' value='save'/>  </form>  ");	 
 		writer.append("review <br/>");
-		writer.append("<a href='/app/reviewResolved'>Resolved</a><br/>"); 
+		writer.append("<a href='/app/reviewResolved'>Resolved</a><br/>");
+			
 		writer.append("<a href='/app/logout'>logout</a><br/>");
+		
 		// set response headers
 		
 		

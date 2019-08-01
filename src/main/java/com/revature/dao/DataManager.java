@@ -272,7 +272,7 @@ public class DataManager{
 
             
         
-        System.out.println(query);
+        query = String.format(query,value ,manager,id);
         execute(query);
 
         
@@ -638,7 +638,7 @@ public class DataManager{
         
     }
 
-
+//get requests based on USERNAME
     public  LinkedList<String>  listRequests(String username,String filter){
         if(filter.equals("pending")){
             filter="and status='pending'";
@@ -693,7 +693,7 @@ public class DataManager{
         return al;
     }
 
-
+//get based on APPROVED/DENIES/PENDING no name
     public  LinkedList<String>  listStatus(String state){
         LinkedList<String> al=new LinkedList<String>();  
         
@@ -725,7 +725,9 @@ public class DataManager{
                 String status = rs.getString("status");
                 String amount = rs.getString("amount");
                 String username = rs.getString("username");
+                String manager_reviewed = rs.getString("manager");
                 
+                al.push(manager_reviewed);
                 al.push(amount);
                 al.push(comment);
                 al.push( picture );
