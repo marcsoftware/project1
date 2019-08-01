@@ -93,7 +93,9 @@ public class reviewResolved extends HttpServlet {
 		}
 
 		writer.append("</table>");
-		writer.append("	<input type='submit' value='save'/>  </form>  ");	 
+		writer.append("	<input type='submit' value='save'/>  </form>  ");	
+		writer.append("<a href='/app/review'>review</a><br/>");
+			writer.append(" Resolved <br/>"); 
 		writer.append("<a href='/app/logout'>logout</a><br/>");
 		// set response headers
 		

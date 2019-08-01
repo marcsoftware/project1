@@ -65,6 +65,7 @@ public class login extends HttpServlet {
 			  .append("				<input type=\"submit\" value=\"Submit\" />")
 			  .append("			</form>\r\n")
 			  .append("<a href='/app/register'>register</a><br/>")
+			  .append("<a href='/app/homepage'>home</a><br/>")
 			  .append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}

@@ -700,6 +700,9 @@ public class DataManager{
          
         String query = "SELECT * FROM requests where status='%s' ";
 
+        if(state.equals("resolved")){
+            query="SELECT * FROM requests where status!='pending' ";
+        }
                       
         Statement stmt; 
         try{
