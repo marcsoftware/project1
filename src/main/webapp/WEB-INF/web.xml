@@ -40,6 +40,29 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>viewPending</servlet-name>
+		<servlet-class>com.revature.viewPending</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>viewPending</servlet-name>
+		<url-pattern>/viewPending</url-pattern>
+	</servlet-mapping>
+
+		<servlet>
+		<servlet-name>viewResolved</servlet-name>
+		<servlet-class>com.revature.viewResolved</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>viewResolved</servlet-name>
+		<url-pattern>/viewResolved</url-pattern>
+	</servlet-mapping>
+
+
+	<servlet>
 		<servlet-name>review</servlet-name>
 		<servlet-class>com.revature.review</servlet-class>
 		<load-on-startup>1</load-on-startup>
