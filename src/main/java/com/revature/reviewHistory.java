@@ -56,12 +56,12 @@ public class reviewHistory extends HttpServlet {
 				// create HTML form
 		
 	
-			  writer.append("			<title>review</title>\r\n")
+			  writer.append("			<title>history</title>\r\n")
 			  .append("<style>#customers { font-family: 'Trebuchet MS, Arial, Helvetica, sans-serif'; border-collapse: collapse; width: 100%; } #customers td, #customers th { border: 1px solid #ddd; padding: 8px; width:10%} #customers tr:nth-child(even){background-color: #f2f2f2;} #customers tr:hover {background-color: #ddd;} #customers th { padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white; }</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>"+user.getValue( )+"</p>\r\n");
-
+			  writer.append("<h6>history</h6> ");	
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
 		writer.append("<table id='customers' style='width:100%'>");
@@ -106,7 +106,7 @@ public class reviewHistory extends HttpServlet {
 		writer.append("</table>");
 		writer.append("	<input type='submit' value='save'/>  </form>  ");	
 		writer.append("<a href='/app/review'>review</a><br/>");
-			writer.append(" Resolved <br/>"); 
+			
 
 			
 			writer.append("<a href='/app/reviewResolved'>Resolved</a><br/>");

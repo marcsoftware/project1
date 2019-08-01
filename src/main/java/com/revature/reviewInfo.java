@@ -40,7 +40,7 @@ public class reviewInfo extends HttpServlet {
 				session.connect();
 				String rank=session.getRank(user.getValue(), password.getValue());
 				if(!rank.equals("admin")){
-					writer.append("			<title>review info</title>\r\n")
+					writer.append("			<title>list of associates</title>\r\n")
 					.append("		</head>\r\n")
 					.append("		<body>\r\n")
 					.append("<p>You are not an admin.</p>\r\n")
@@ -60,7 +60,7 @@ public class reviewInfo extends HttpServlet {
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>"+user.getValue( )+"</p>\r\n");
-
+			  writer.append("<h6>list of associates</h6> ");	
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
 		writer.append("<table id='customers' style='width:100%'>");
@@ -91,13 +91,13 @@ public class reviewInfo extends HttpServlet {
 
 		writer.append("	<input type='submit' value='save'/>  </form>  ");	
 		writer.append("<a href='/app/review'>review</a><br/>");
-			writer.append(" Resolved <br/>"); 
+			 
 
 			
 			writer.append("<a href='/app/reviewResolved'>Resolved</a><br/>");
 			
 			
-
+			writer.append("list workers<br/>");
 		writer.append("<a href='/app/logout'>logout</a><br/>");
 		// set response headers
 		
