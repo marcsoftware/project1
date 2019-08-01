@@ -271,7 +271,7 @@ public class DataManager{
             "WHERE id=%s ";        
 
             
-        query = String.format(query,value ,manager,id);
+        
         System.out.println(query);
         execute(query);
 
