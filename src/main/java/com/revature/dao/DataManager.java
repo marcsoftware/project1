@@ -263,15 +263,16 @@ public class DataManager{
     }
 
 
-    public void updateStatus(String id, String value){
+    public void updateStatus(String id, String value,String manager){
        
         //
          String query= "UPDATE requests "+
-            "SET status = '%s'  "+
+            "SET status = '%s', manager='%s' "+
             "WHERE id=%s ";        
 
             
-            query = String.format(query,value ,id);
+        query = String.format(query,value ,manager,id);
+        System.out.println(query);
         execute(query);
 
         

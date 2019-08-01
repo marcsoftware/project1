@@ -95,7 +95,7 @@ public class review extends HttpServlet {
 		writer.append("</table>");
 		writer.append("	<input type='submit' value='save'/>  </form>  ");	  
 		writer.append("<br/><a href='/app/request'>request</a><br/>")
-			  .append("<a href='/app/view'>view</a><br/>")
+			  
 			  .append("<a href='/app/logout'>logout</a><br/>");
 		// set response headers
 		
@@ -126,6 +126,11 @@ public void handleRequest(HttpServletRequest req, HttpServletResponse res) throw
 	PrintWriter out = res.getWriter();
 	res.setContentType("text/html");
 
+
+	Cookie[] cookies = req.getCookies();
+	  
+		Cookie user=getCookie(req, "user");
+
 	Enumeration<String> parameterNames = req.getParameterNames();
 
 	while (parameterNames.hasMoreElements()) {
@@ -144,7 +149,7 @@ public void handleRequest(HttpServletRequest req, HttpServletResponse res) throw
 
 				
 			session.connect();
-			session.updateStatus(paramName, paramValue);
+			session.updateStatus(paramName, paramValue, user.getValue());
 		}
 		out.write("work was saved. <a href='/app/review'>review</a><br/>");
 	}
