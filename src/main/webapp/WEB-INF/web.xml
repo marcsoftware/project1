@@ -85,6 +85,28 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>reviewHistory</servlet-name>
+		<servlet-class>com.revature.reviewHistory</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>reviewHistory</servlet-name>
+		<url-pattern>/reviewHistory</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>reviewInfo</servlet-name>
+		<servlet-class>com.revature.reviewInfo</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>reviewInfo</servlet-name>
+		<url-pattern>/reviewInfo</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>com.revature.logout</servlet-class>
 		<load-on-startup>1</load-on-startup>

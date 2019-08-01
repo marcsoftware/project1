@@ -6,6 +6,8 @@ CREATE TABLE user_accounts(
    user_id serial PRIMARY KEY,
    username VARCHAR (50) UNIQUE NOT NULL,
    password VARCHAR (50) NOT NULL,
+   realname varchar(100),
+   email varchar(100),
    rank varchar(20)
   
 );
