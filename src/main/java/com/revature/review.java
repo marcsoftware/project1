@@ -59,7 +59,7 @@ public class review extends HttpServlet {
 			  .append("<style>#customers { font-family: 'Trebuchet MS, Arial, Helvetica, sans-serif'; border-collapse: collapse; width: 100%; } #customers td, #customers th { border: 1px solid #ddd; padding: 8px; width:10%} #customers tr:nth-child(even){background-color: #f2f2f2;} #customers tr:hover {background-color: #ddd;} #customers th { padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white; }</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+rank+"</p>\r\n");
+			  .append("			<p>"+user.getValue( )+"</p>\r\n");
 
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
@@ -118,26 +118,27 @@ public class review extends HttpServlet {
 public void doPost(HttpServletRequest request, HttpServletResponse response)  
 		throws ServletException, IOException {  
 			handleRequest(request, response);
+			
 }
 
 public void handleRequest(HttpServletRequest req, HttpServletResponse res) throws IOException {
  
 	PrintWriter out = res.getWriter();
-	res.setContentType("text/plain");
+	res.setContentType("text/html");
 
 	Enumeration<String> parameterNames = req.getParameterNames();
 
 	while (parameterNames.hasMoreElements()) {
 
 		String paramName = parameterNames.nextElement();
-		out.write(paramName);
+		//out.write(paramName);
 		
 
 		String[] paramValues = req.getParameterValues(paramName);
 		for (int i = 0; i < paramValues.length; i++) {
 			String paramValue = paramValues[i];
-			out.write(" is " + paramValue);
-			out.write(" : ");
+			//out.write(" is " + paramValue);
+			//out.write(" : ");
 
 			DataManager session = new DataManager();
 
@@ -145,7 +146,7 @@ public void handleRequest(HttpServletRequest req, HttpServletResponse res) throw
 			session.connect();
 			session.updateStatus(paramName, paramValue);
 		}
-
+		out.write("work was saved. <a href='/app/review'>review</a><br/>");
 	}
 
 	out.close();
