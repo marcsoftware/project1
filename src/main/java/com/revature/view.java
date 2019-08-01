@@ -100,9 +100,9 @@ public class view extends HttpServlet {
 		
 		
 			  
-		writer.append("			<p>this is the view</p>\r\n")
+
 	
-			  .append("		</body>\r\n")
+			  writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}
 
