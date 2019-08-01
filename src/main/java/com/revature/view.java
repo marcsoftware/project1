@@ -47,7 +47,7 @@ public class view extends HttpServlet {
 		}
 			
 				
-				LinkedList<String> result=session.listRequests(user.getValue());
+				LinkedList<String> result=session.listRequests(user.getValue(),"");
 
 				// create HTML form
 	

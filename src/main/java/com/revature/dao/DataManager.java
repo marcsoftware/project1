@@ -638,11 +638,18 @@ public class DataManager{
     }
 
 
-    public  LinkedList<String>  listRequests(String username){
+    public  LinkedList<String>  listRequests(String username,String filter){
+        if(filter.equals("pending")){
+            filter="and status='pending'";
+        }else if(filter.equals("resolved")){
+            filter="and status!='pending'";
+        }else{
+            filter="";
+        }
         LinkedList<String> al=new LinkedList<String>();  
         
          
-        String query = "SELECT * FROM requests where username='%s' ";
+        String query = "SELECT * FROM requests where username='%s'  "+filter;
 
                       
         Statement stmt; 
