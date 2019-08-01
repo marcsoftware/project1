@@ -77,7 +77,7 @@ public class reviewInfo extends HttpServlet {
 			
 		
 			writer.append("<tr>");
-			writer.append("<td id='cell'>"+result.get(i+3)+"</td>");
+			writer.append("<td id='cell'><a href='reviewHistory?t="+result.get(i+3)+"'>"+result.get(i+3)+"</a></td>");
 			writer.append("<td id='cell'>"+result.get(i+2)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+1)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+0)+"</td>");

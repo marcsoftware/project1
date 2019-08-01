@@ -693,6 +693,70 @@ public class DataManager{
         return al;
     }
 
+//list an employees request history
+    public  LinkedList<String>  listHistory(String username,String filter){
+        if(filter.equals("pending")){
+            filter="and status='pending'";
+        }else if(filter.equals("resolved")){
+            filter="and status!='pending'";
+        }else{
+            filter="";
+        }
+        LinkedList<String> al=new LinkedList<String>();  
+        
+         
+        String query = "SELECT * FROM requests where username='%s'  "+filter;
+
+                      
+        Statement stmt; 
+        try{
+            
+            stmt = conn.createStatement(); 
+            query  = String.format(query, username);
+            
+            ResultSet rs = stmt.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            
+           
+            System.out.println("----------------------------------");
+            while (rs.next()) {
+                
+                
+                String id = rs.getString("id");
+                String name = rs.getString("username");
+                String comment = rs.getString("comment");
+                String picture = rs.getString("image");
+                String status = rs.getString("status");
+                String amount = rs.getString("amount");
+                String manager = rs.getString("manager");
+                al.push(status);
+                al.push(manager);
+                al.push(amount);
+                
+                
+                al.push(comment);
+                al.push( picture );
+                
+                al.push(name);
+                al.push(id);
+                
+             
+		
+            }
+            System.out.println("----------------------------------");
+            stmt.close();
+            rs.close();
+
+        }catch(Exception  e){
+            System.err.format("ERROR: \n%s\n", e.getMessage());
+        }finally{
+            
+        }
+
+        return al;
+    }
+
 //get based on APPROVED/DENIES/PENDING no name
     public  LinkedList<String>  listStatus(String state){
         LinkedList<String> al=new LinkedList<String>();  

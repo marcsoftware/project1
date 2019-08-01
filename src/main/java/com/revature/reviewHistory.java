@@ -31,7 +31,8 @@ public class reviewHistory extends HttpServlet {
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");		
 		DataManager session = new DataManager();
-
+		String target_user = request.getParameter("t");
+		System.out.println(target_user);
 		PrintWriter writer = response.getWriter();
 		writer.append("<!DOCTYPE html>\r\n")
 		.append("<html>\r\n")
@@ -40,7 +41,7 @@ public class reviewHistory extends HttpServlet {
 				session.connect();
 				String rank=session.getRank(user.getValue(), password.getValue());
 				if(!rank.equals("admin")){
-					writer.append("			<title>resolved</title>\r\n")
+					writer.append("			<title>user's request history</title>\r\n")
 					.append("		</head>\r\n")
 					.append("		<body>\r\n")
 					.append("<p>You are not an admin.</p>\r\n")
@@ -50,7 +51,7 @@ public class reviewHistory extends HttpServlet {
 			  		
 					return;
 				}
-				LinkedList<String> result=session.listStatus("resolved");
+				LinkedList<String> result=session.listHistory(target_user,"all");
 
 				// create HTML form
 		
@@ -65,6 +66,13 @@ public class reviewHistory extends HttpServlet {
 		// Traditional for loop approach
 		writer.append("<table id='customers' style='width:100%'>");
 		
+	
+          
+        
+            
+           
+			
+				
 		writer.append("<tr>");
 		writer.append("<th>reference#</th>");
 		writer.append("<th>name</th>");
@@ -86,12 +94,12 @@ public class reviewHistory extends HttpServlet {
 			
 			writer.append("</td>");
 			writer.append("<td id='cell'>"+result.get(i+1)+"</td>");
-			
+			writer.append("<td id='cell'>"+result.get(i+2)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+3)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+4)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+5)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+6)+"</td>");
-			writer.append("<td id='cell'>"+result.get(i+2)+"</td>");
+			
 			writer.append("</tr>");
 		}
 
