@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.Random;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
@@ -39,6 +39,7 @@ public class requestb extends HttpServlet {
 	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");
+		
 		DataManager session = new DataManager();
 		session.connect();
 		String rank=session.getRank(user.getValue(), password.getValue());
@@ -92,7 +93,7 @@ public class requestb extends HttpServlet {
 				Cookie[] cookies = request.getCookies();
 	  
 				Cookie user=getCookie(request, "user");
-
+				String rand ="";  
 				// Create a factory for disk-based file items
 DiskFileItemFactory factory = new DiskFileItemFactory();
 
@@ -127,8 +128,8 @@ try{
 						long sizeInBytes = item.getSize();
 					// processUploadedFile(item);
 					// Process a file upload
-					
-						File uploadedFile = new File(filePath+"1.png");
+					rand =String.valueOf(new Random());  
+						File uploadedFile = new File(filePath+(rand)+".png");
 						item.write(uploadedFile);
 					
 					}
@@ -140,7 +141,7 @@ try{
 				
 				DataManager session = new DataManager();
 		session.connect();
-				session.addNewRequest(user.getValue(), amount, comment, picture);
+				session.addNewRequest(user.getValue(), amount, comment, rand);
 				//Boolean result = session.register(user,password);
 			
 		response.setContentType("text/html");
