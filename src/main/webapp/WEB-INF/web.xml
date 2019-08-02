@@ -151,4 +151,15 @@
 		<url-pattern>/request</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>requestb</servlet-name>
+		<servlet-class>com.revature.requestb</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>requestb</servlet-name>
+		<url-pattern>/requestb</url-pattern>
+	</servlet-mapping>
+
 </web-app>
