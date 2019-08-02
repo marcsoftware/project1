@@ -6,7 +6,16 @@ import java.io.*;
 import javax.servlet.*;  
 import javax.servlet.http.*;  
 
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Random;
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileUploadException;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.output.*;
 
 import java.util.Scanner;
 
@@ -30,6 +39,7 @@ public class request extends HttpServlet {
 	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");
+		
 		DataManager session = new DataManager();
 		session.connect();
 		String rank=session.getRank(user.getValue(), password.getValue());
@@ -60,14 +70,14 @@ public class request extends HttpServlet {
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
 			  .append("		form:\n\r")
-			  .append("			<form action=\"request\" method=\"POST\">\r\n")
+			  .append("			<form action=\"request\" method=\"POST\" enctype = 'multipart/form-data'>\r\n")
 			  .append("				amount: \r\n")
 			  
 			  .append("				<input type=\"text\" name=\"amount\" />\r\n")
 			  .append("				comment: \r\n")
 			  .append("				<input type=\"text\" name=\"comment\" />\r\n")
 			  .append("				picture: \r\n")
-			  .append("				<input type=\"text\" name=\"picture\" />\r\n")
+			  .append("				<input type=\"file\" name=\"picture\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
 			  .append("			</form>\r\n");
 			  writer.append("<br/><a href='/app/request'>request</a><br/>")
@@ -83,14 +93,55 @@ public class request extends HttpServlet {
 				Cookie[] cookies = request.getCookies();
 	  
 				Cookie user=getCookie(request, "user");
+				String rand ="";  
+				// Create a factory for disk-based file items
+DiskFileItemFactory factory = new DiskFileItemFactory();
 
-				String amount = request.getParameter("amount");
-				String comment = request.getParameter("comment");
-				String picture = request.getParameter("picture");
+// Configure a repository (to ensure a secure temp location is used)
+ServletContext servletContext = this.getServletConfig().getServletContext();
+File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+factory.setRepository(new File("c:\\temp"));
+
+// Create a new file upload handler
+ServletFileUpload upload = new ServletFileUpload(factory);
+String filePath = getServletContext().getInitParameter("file-upload"); 
+// Parse the request
+int i=0;
+String[] bucket = new String[]{ "","","","","","" }; 
+try{
+				List<FileItem> items = upload.parseRequest(request);
+
+				Iterator<FileItem> iter= items.iterator();
+				while (iter.hasNext()) {
+					FileItem item = iter.next();
+
+					if (item.isFormField()) {
+						String test = item.getFieldName();
+						bucket[i] = item.getString();
+						System.out.println(test+"-----------"+bucket[i]);
+						i++;
+					} else {
+						String fieldName = item.getFieldName();
+						String fileName = item.getName();
+						String contentType = item.getContentType();
+						boolean isInMemory = item.isInMemory();
+						long sizeInBytes = item.getSize();
+					// processUploadedFile(item);
+					// Process a file upload
+					rand =String.valueOf(new Random());  
+						File uploadedFile = new File(filePath+(rand)+".png");
+						item.write(uploadedFile);
+					
+					}
+				}
+			}catch(Exception e){}
+				String amount = bucket[0];
+				String comment = bucket[1];
+				String picture = bucket[2];
 				
 				DataManager session = new DataManager();
 		session.connect();
-				session.addNewRequest(user.getValue(), amount, comment, picture);
+				session.addNewRequest(user.getValue(), amount, comment, rand);
 				//Boolean result = session.register(user,password);
 			
 		response.setContentType("text/html");
