@@ -64,7 +64,7 @@ public class homepage extends HttpServlet {
 		}else{
 			
 			writer.append("<p>you are not logged in</p>");
-			writer.append("<a href='/app/'>login</a><br/>");
+			writer.append("<a href='/app/login'>login</a><br/>");
 			writer.append("<a href='/app/register'>register</a><br/>");
 		
 		}
