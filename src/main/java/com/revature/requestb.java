@@ -99,11 +99,11 @@ DiskFileItemFactory factory = new DiskFileItemFactory();
 // Configure a repository (to ensure a secure temp location is used)
 ServletContext servletContext = this.getServletConfig().getServletContext();
 File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
-factory.setRepository(repository);
+factory.setRepository(new File("c:\\temp"));
 
 // Create a new file upload handler
 ServletFileUpload upload = new ServletFileUpload(factory);
-
+String filePath = getServletContext().getInitParameter("file-upload"); 
 // Parse the request
 int i=0;
 String[] bucket = new String[]{ "","","","","","" }; 
@@ -128,7 +128,7 @@ try{
 					// processUploadedFile(item);
 					// Process a file upload
 					
-						File uploadedFile = new File("src/images");
+						File uploadedFile = new File(filePath+"1.png");
 						item.write(uploadedFile);
 					
 					}
