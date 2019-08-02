@@ -6,6 +6,7 @@ import java.io.*;
 import javax.servlet.*;  
 import javax.servlet.http.*;  
 
+import java.util.LinkedList; 
 
 
 import java.util.Scanner;
@@ -43,7 +44,7 @@ public class Profile extends HttpServlet {
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
 			  
-			  .append("			<title>request</title>\r\n");
+			  .append("			<title>Profile</title>\r\n");
 
 			  if(!rank.equals("employee")){
 		
@@ -56,25 +57,44 @@ public class Profile extends HttpServlet {
 				  
 				return;
 			}
-			  writer.append("		</head>\r\n")
-			  .append("		<body>\r\n")
-			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
-			  .append("		form:\n\r")
-			  .append("			<form action=\"request\" method=\"POST\">\r\n")
-			  .append("				amount: \r\n")
+			  writer.append("		</head>\r\n");
+
+			  LinkedList<String> result=session.getProfile(user.getValue());
+
+			// Traditional for loop approach
+	
+			String fullname="";
+			String email="";
+		for (int i = 0; i < result.size(); i=i+5) {
+	
+				 fullname= result.get(i);
+				 email = result.get(i+1);
+				 rank= result.get(i+2);
+
+		}
+	
+		
+
+			  writer.append("		<body>")
+			  .append("			<p>"+user.getValue( )+"</p>")
+			  .append("			<h5>Profile:</h5>")
 			  
-			  .append("				<input type=\"text\" name=\"amount\" />\r\n")
-			  .append("				comment: \r\n")
-			  .append("				<input type=\"text\" name=\"comment\" />\r\n")
-			  .append("				picture: \r\n")
-			  .append("				<input type=\"text\" name=\"picture\" />\r\n")
-			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
-			  .append("			</form>\r\n");
+			  .append("			<form action=\"Profile\" method=\"POST\">")
+			  .append("				full name: ")
+			  
+			  .append("				<input type=\"text\" name=\"fullname\" value='"+fullname+"'/><br/>")
+			  .append("				e-mail: ")
+			  .append("				<input type=\"text\" name=\"email\" value='"+email+" '/><br/>")
+			  .append("				role: "+rank+"<br/>")
+			  
+			  .append("				<input type=\"submit\" value='update profile'/>")
+			  .append("			</form>");
 			  writer.append("<br/><a href='/app/request'>request</a><br/>")
 			  .append("<a href='/app/view'>view</a><br/>")
+			  .append("Profile<br/>")
 			  .append("<a href='/app/logout'>logout</a><br/>")
-			  .append("		</body>\r\n")
-			  .append("</html>\r\n");
+			  .append("		</body>")
+			  .append("</html>");
 	}
 
 	@Override
@@ -84,13 +104,13 @@ public class Profile extends HttpServlet {
 	  
 				Cookie user=getCookie(request, "user");
 
-				String amount = request.getParameter("amount");
-				String comment = request.getParameter("comment");
-				String picture = request.getParameter("picture");
+				String realname = request.getParameter("fullname");
+				String email = request.getParameter("email");
+				
 				
 				DataManager session = new DataManager();
 		session.connect();
-				session.addNewRequest(user.getValue(), amount, comment, picture);
+				session.updateProfile(user.getValue(),realname,email );
 				//Boolean result = session.register(user,password);
 			
 		response.setContentType("text/html");
@@ -101,12 +121,13 @@ public class Profile extends HttpServlet {
 		writer.append("<!DOCTYPE html>\r\n")
 			  .append("<html>\r\n")
 			  .append("		<head>\r\n")
-			  .append("			<title>request was submitted</title>\r\n")
+			  .append("			<title>Your profile was updated.</title>\r\n")
 			  
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
-			  .append("			<p>Your request was submitted.</p>\r\n");
+			  .append("			<p>Your profile was updated.</p>\r\n");
 			  writer.append("<br/><a href='/app/request'>request</a><br/>")
+			  .append("<a href='/app/Profile'>Profile</a><br/>")
 			  .append("<a href='/app/view'>view</a><br/>")
 			  .append("<a href='/app/logout'>logout</a><br/>");
 		writer.append("		</body>\r\n")

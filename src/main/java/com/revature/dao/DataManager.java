@@ -278,6 +278,23 @@ public class DataManager{
         
     }
 
+
+    public void updateProfile(String username, String realname,String email){
+       
+        //
+         String query= "UPDATE user_accounts "+
+            "SET realname ='%s', email='%s' "+
+            "WHERE username='%s' ";        
+
+            
+        
+        query = String.format(query,realname,email,username);
+        
+        execute(query);
+
+        
+    }
+
     public void transfer(String[] args){
         if(args.length<4){
             System.out.println("failed: you are missing args.");
@@ -679,6 +696,55 @@ public class DataManager{
                 al.push( picture );
                 al.push(status);
                 al.push(id);
+            }
+            System.out.println("----------------------------------");
+            stmt.close();
+            rs.close();
+
+        }catch(Exception  e){
+            System.err.format("ERROR: \n%s\n", e.getMessage());
+        }finally{
+            
+        }
+
+        return al;
+    }
+
+
+
+    public  LinkedList<String>  getProfile(String username){
+     
+        LinkedList<String> al=new LinkedList<String>();  
+        
+         
+        String query = "SELECT * FROM user_accounts where username='%s'  ";
+
+                      
+        Statement stmt; 
+        try{
+            
+            stmt = conn.createStatement(); 
+            query  = String.format(query, username);
+            
+            ResultSet rs = stmt.executeQuery(query);
+            ResultSetMetaData rsmd = rs.getMetaData();
+
+            
+           
+            System.out.println("----------------------------------");
+            while (rs.next()) {
+                
+                
+                
+                String realname = rs.getString("realname");
+                String email = rs.getString("email");
+                String rank = rs.getString("rank");
+                
+                al.push( rank );
+                
+                al.push(email);
+                al.push(realname);
+               
             }
             System.out.println("----------------------------------");
             stmt.close();

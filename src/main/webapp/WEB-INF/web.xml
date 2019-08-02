@@ -107,6 +107,17 @@
 	</servlet-mapping>
 
 	<servlet>
+		<servlet-name>Profile</servlet-name>
+		<servlet-class>com.revature.Profile</servlet-class>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	
+	<servlet-mapping>
+		<servlet-name>Profile</servlet-name>
+		<url-pattern>/Profile</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
 		<servlet-name>logout</servlet-name>
 		<servlet-class>com.revature.logout</servlet-class>
 		<load-on-startup>1</load-on-startup>
