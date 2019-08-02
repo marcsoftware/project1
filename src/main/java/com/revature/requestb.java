@@ -69,7 +69,7 @@ public class requestb extends HttpServlet {
 			  .append("		<body>\r\n")
 			  .append("			<p>:::"+user.getValue( )+"</p>\r\n")
 			  .append("		form:\n\r")
-			  .append("			<form action=\"request\" method=\"POST\" enctype = 'multipart/form-data'>\r\n")
+			  .append("			<form action=\"requestb\" method=\"POST\" enctype = 'multipart/form-data'>\r\n")
 			  .append("				amount: \r\n")
 			  
 			  .append("				<input type=\"text\" name=\"amount\" />\r\n")
@@ -105,7 +105,8 @@ factory.setRepository(repository);
 ServletFileUpload upload = new ServletFileUpload(factory);
 
 // Parse the request
-
+int i=0;
+String[] bucket = new String[]{ "","","","","","" }; 
 try{
 				List<FileItem> items = upload.parseRequest(request);
 
@@ -114,16 +115,21 @@ try{
 					FileItem item = iter.next();
 
 					if (item.isFormField()) {
-						String name = item.getFieldName();
-    					String value = item.getString();
+						String test = item.getFieldName();
+						bucket[i] = item.getString();
+						System.out.println(test+"-----------"+bucket[i]);
+						i++;
 					} else {
+						String name = item.getFieldName();
+						String value = item.getString();
+						System.out.println(name+"-----------"+value);
 					// processUploadedFile(item);
 					}
 				}
 			}catch(Exception e){}
-				String amount = request.getParameter("amount");
-				String comment = request.getParameter("comment");
-				String picture = request.getParameter("picture");
+				String amount = bucket[0];
+				String comment = bucket[1];
+				String picture = bucket[2];
 				
 				DataManager session = new DataManager();
 		session.connect();
