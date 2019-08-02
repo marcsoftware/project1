@@ -76,7 +76,7 @@ public class requestb extends HttpServlet {
 			  .append("				comment: \r\n")
 			  .append("				<input type=\"text\" name=\"comment\" />\r\n")
 			  .append("				picture: \r\n")
-			  .append("				<input type=\"text\" name=\"picture\" />\r\n")
+			  .append("				<input type=\"file\" name=\"picture\" />\r\n")
 			  .append("				<input type=\"submit\" value=\"Submit\" />\r\n")
 			  .append("			</form>\r\n");
 			  writer.append("<br/><a href='/app/request'>request</a><br/>")
@@ -120,10 +120,17 @@ try{
 						System.out.println(test+"-----------"+bucket[i]);
 						i++;
 					} else {
-						String name = item.getFieldName();
-						String value = item.getString();
-						System.out.println(name+"-----------"+value);
+						String fieldName = item.getFieldName();
+						String fileName = item.getName();
+						String contentType = item.getContentType();
+						boolean isInMemory = item.isInMemory();
+						long sizeInBytes = item.getSize();
 					// processUploadedFile(item);
+					// Process a file upload
+					
+						File uploadedFile = new File("src/images");
+						item.write(uploadedFile);
+					
 					}
 				}
 			}catch(Exception e){}
