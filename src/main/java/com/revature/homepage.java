@@ -57,6 +57,7 @@ public class homepage extends HttpServlet {
 			writer.append("<p>employee homepage.</p>\r\n");
 			writer.append("<a href='/app/request'>request</a><br/>");
 			writer.append("<a href='/app/view'>request history</a><br/>");
+			writer.append("<a href='/app/Profile'>Profile</a><br/>");
 			writer.append("<a href='/app/logout'>logout</a><br/>");
 		
 			  

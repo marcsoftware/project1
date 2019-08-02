@@ -128,10 +128,13 @@ try{
 						long sizeInBytes = item.getSize();
 					// processUploadedFile(item);
 					// Process a file upload
-					rand =String.valueOf(new Random());  
-						File uploadedFile = new File(filePath+(rand)+".png");
-						item.write(uploadedFile);
-					
+						if(fileName.length()>2){
+							rand =String.valueOf(new Random());  
+							File uploadedFile = new File(filePath+(rand)+".png");
+							item.write(uploadedFile);
+						}else{
+							rand="";
+						}
 					}
 				}
 			}catch(Exception e){}
