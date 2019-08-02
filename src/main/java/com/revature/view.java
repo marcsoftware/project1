@@ -71,11 +71,7 @@ public class view extends HttpServlet {
 		writer.append("<th>amount</th>");
 
 		writer.append("</tr>");
-		/**al.push(amount);
-                al.push(comment);
-                al.push( picture );
-                al.push(status);
-                al.push(id); */
+		String filePath = getServletContext().getInitParameter("file-upload"); 
 		for (int i = 0; i < result.size(); i=i+5) {
 			System.out.println(result.get(i));
 		
@@ -83,7 +79,7 @@ public class view extends HttpServlet {
 			writer.append("<tr>");
 			writer.append("			<td id='cell'>"+result.get(i)+"</td>");
 			writer.append("			<td id='cell'>"+result.get(i+1)+"</td>");
-			writer.append("			<td id='cell'>"+result.get(i+2)+"</td>");
+			writer.append("			<td id='cell'><img src='"+filePath+"\\"+result.get(i+2)+".png'></td>");
 			writer.append("			<td id='cell'>"+result.get(i+3)+"</td>");
 			writer.append("			<td id='cell'>"+result.get(i+4)+"</td>");
 			writer.append("</tr>");
