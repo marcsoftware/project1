@@ -57,7 +57,7 @@ public class reviewHistory extends HttpServlet {
 		
 	
 			  writer.append("			<title>history</title>\r\n")
-			  .append("<style>#customers { font-family: 'Trebuchet MS, Arial, Helvetica, sans-serif'; border-collapse: collapse; width: 100%; } #customers td, #customers th { border: 1px solid #ddd; padding: 8px; width:10%} #customers tr:nth-child(even){background-color: #f2f2f2;} #customers tr:hover {background-color: #ddd;} #customers th { padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white; }</style>\r\n")
+			  .append("<style>img{width:20%;}#customers { font-family: 'Trebuchet MS, Arial, Helvetica, sans-serif'; border-collapse: collapse; width: 100%; } #customers td, #customers th { border: 1px solid #ddd; padding: 8px; width:10%} #customers tr:nth-child(even){background-color: #f2f2f2;} #customers tr:hover {background-color: #ddd;} #customers th { padding-top: 12px; padding-bottom: 12px; text-align: left; background-color: #4CAF50; color: white; }</style>\r\n")
 			  .append("		</head>\r\n")
 			  .append("		<body>\r\n")
 			  .append("			<p>"+user.getValue( )+"</p>\r\n");
@@ -94,7 +94,14 @@ public class reviewHistory extends HttpServlet {
 			
 			writer.append("</td>");
 			writer.append("<td id='cell'>"+result.get(i+1)+"</td>");
-			writer.append("<td id='cell'>"+result.get(i+2)+"</td>");
+			
+			String img_name=result.get(i+2);
+			String img_url= "<img src='http://localhost:8080/app/data/"+img_name+".png'>";
+			if(img_name.equals("")){
+				img_url="";
+			}
+			writer.append("			<td id='cell'>"+img_url+"</td>");
+			
 			writer.append("<td id='cell'>"+result.get(i+3)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+4)+"</td>");
 			writer.append("<td id='cell'>"+result.get(i+5)+"</td>");
