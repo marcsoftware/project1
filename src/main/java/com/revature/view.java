@@ -82,7 +82,7 @@ public class view extends HttpServlet {
 			
 			
 			String img_name=result.get(i+2);
-			String img_url= "<img src='http://localhost:8080/app/data/"+img_name+".png'>";
+			String img_url= "<img src='http://localhost:8080/temp/"+img_name+".png'>";
 			if(img_name.equals("")){
 				img_url="";
 			}
