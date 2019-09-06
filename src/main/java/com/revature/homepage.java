@@ -19,23 +19,25 @@ public class homepage extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
 				
-				
-				
-				
-			
          
       // Get an array of Cookies associated with this domain
 	  Cookie[] cookies = request.getCookies();
 	  
 		Cookie user=getCookie(request, "user");
-
 		
-		Cookie password=getCookie(request, "password");		
+		Cookie password=getCookie(request, "password");
+
+
 		PrintWriter writer = response.getWriter();
 		DataManager session = new DataManager();
 		session.connect();
-		String rank=session.getRank(user.getValue(), password.getValue());
 
+		String rank;
+		try{
+			rank=session.getRank(user.getValue(), password.getValue());
+		}catch(Exception e){
+			rank="none";
+		}
 		writer.append("<!DOCTYPE html>\r\n");
 		writer.append("<html>\r\n")
 			   .append("		<head>\r\n")
@@ -60,8 +62,6 @@ public class homepage extends HttpServlet {
 			writer.append("<a href='/app/Profile'>Profile</a><br/>");
 			writer.append("<a href='/app/logout'>logout</a><br/>");
 		
-			  
-			
 		}else{
 			
 			writer.append("<p>you are not logged in</p>");
@@ -75,17 +75,11 @@ public class homepage extends HttpServlet {
 		
 		// create HTML form
 		
-	
-			  
-			  
-			  
-			  
 			  writer.append("		</body>\r\n")
 			  .append("</html>\r\n");
 	}
 
 
-	
 
 	public void destroy(  ) {
 		

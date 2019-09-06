@@ -1329,8 +1329,6 @@ public class DataManager{
             ResultSetMetaData rsmd = rs.getMetaData();
 
             
-        
-            
             if (rs.next()) {
               
                  rank = rs.getString("rank");
