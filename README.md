@@ -15,7 +15,7 @@ I used the extension "Tomcat for Java - Wei Shen" for vscode to deploy the war f
 
 5. in vsocde right click tomcat server to run
 6. right click war file > click run on tomcat server
-7. right click > open in browser
+8. open this url in your browser : http://localhost:8080/app/homepage
 ```
 ## this prevents the drive not found error during runtime
  mvn install:install-file -Dfile=c:/db/postgresql-42.2.6.jar -DgroupId=org.postgresql -DartifactId=postgresql -Dversion=42.2.6 -Dpackaging=jar
