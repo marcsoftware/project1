@@ -1,4 +1,9 @@
 
+# HOW TO RUN
+```
+mvn clean install
+```
+This create a war file.
 
 # run this command and make sure the jar file is downloaded to that location
 

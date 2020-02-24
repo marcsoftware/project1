@@ -1,0 +1,15 @@
+com\revature\dao\DataManager.class
+com\revature\login.class
+com\revature\request.class
+com\revature\reviewInfo.class
+com\revature\Profile.class
+com\revature\viewResolved.class
+com\revature\homepage.class
+com\revature\viewPending.class
+com\revature\logout.class
+com\revature\review.class
+com\revature\reviewHistory.class
+com\revature\requestb.class
+com\revature\view.class
+com\revature\register.class
+com\revature\reviewResolved.class
