@@ -1,13 +1,13 @@
 package com.revature;
 
-import com.revature.dao.*;
+
 import java.io.*;  
 import javax.servlet.*;  
 import javax.servlet.http.*;  
 
 
 
-import java.util.Scanner;
+
 
 
 
