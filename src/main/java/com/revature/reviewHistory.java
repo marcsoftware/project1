@@ -65,13 +65,6 @@ public class reviewHistory extends HttpServlet {
 		writer.append("	<form action='review' method='post'>  ");	  
 		// Traditional for loop approach
 		writer.append("<table id='customers' style='width:100%'>");
-		
-	
-          
-        
-            
-           
-			
 				
 		writer.append("<tr>");
 		writer.append("<th>reference#</th>");
