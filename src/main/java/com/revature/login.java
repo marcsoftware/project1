@@ -18,15 +18,9 @@ public class login extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-				
-				
-				
-				
-			
-         
+
       // Get an array of Cookies associated with this domain
-	  
-	  
+		  
 		Cookie user=getCookie(request, "user");
 		String current_user; 
 		try{

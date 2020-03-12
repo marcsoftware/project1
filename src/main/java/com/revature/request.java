@@ -14,11 +14,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
-
-
-
-
-
 public class request extends HttpServlet {
 
 	private static final long serialVersionUID = -1641096228274971485L;
@@ -26,15 +21,9 @@ public class request extends HttpServlet {
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-				
-				
-				
-				
-			
-         
+ 
       // Get an array of Cookies associated with this domain
-	  
-	  
+	  	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");
 		

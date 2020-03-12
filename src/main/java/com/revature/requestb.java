@@ -6,7 +6,6 @@ import java.io.*;
 import javax.servlet.*;  
 import javax.servlet.http.*;  
 
-
 import java.util.Iterator;
 import java.util.List;
 import java.util.Random;
@@ -14,10 +13,6 @@ import org.apache.commons.fileupload.FileItem;
 
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-
-
-
-
 
 
 public class requestb extends HttpServlet {
