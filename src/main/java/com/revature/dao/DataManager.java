@@ -95,7 +95,7 @@ public class DataManager{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+          
 
             
            
@@ -131,7 +131,7 @@ public class DataManager{
         if(args.length==1){
             return;
         }
-        String app_id=args[1];
+       
         
         int beg = 1, end = args.length;
 		String[] list_ids = new String[end - beg];
@@ -301,7 +301,7 @@ public class DataManager{
             return; //not enough args
         }
        
-        String from_account = args[1];
+        
         String to_account = args[2];
         String amount = args[3];
  
@@ -383,7 +383,7 @@ public class DataManager{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+          
 
             
         
@@ -428,7 +428,7 @@ public class DataManager{
         
         stmt = conn.createStatement(); 
         ResultSet rs = stmt.executeQuery(query);
-        ResultSetMetaData rsmd = rs.getMetaData();
+       
 
         
     
@@ -558,7 +558,7 @@ public class DataManager{
         if(args.length==1){
             return;
         }
-        String app_id=args[1];
+        
         
         int beg = 1, end = args.length;
 		String[] list_ids = new String[end - beg];
@@ -630,7 +630,7 @@ public class DataManager{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+           
 
             
            
@@ -677,7 +677,7 @@ public class DataManager{
             query  = String.format(query, username);
             
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+            
 
             
            
@@ -727,7 +727,7 @@ public class DataManager{
             query  = String.format(query, username);
             
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+           
 
             
            
@@ -781,7 +781,7 @@ public class DataManager{
             query  = String.format(query, username);
             
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+           
 
             
            
@@ -841,7 +841,7 @@ public class DataManager{
             query  = String.format(query, state);
             
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+         
 
             
            
@@ -894,7 +894,7 @@ public class DataManager{
             query  = String.format(query);
             
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+           
 
             
            
@@ -979,7 +979,7 @@ public class DataManager{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+           
 
             
            
@@ -1237,7 +1237,7 @@ public class DataManager{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+           
 
             
            
@@ -1245,7 +1245,7 @@ public class DataManager{
             if (rs.next()) {
                 
                 
-                String id = rs.getString("user_id");
+              
                 
                 result=true;
                 
@@ -1279,7 +1279,7 @@ public class DataManager{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+          
 
             
         
@@ -1320,13 +1320,13 @@ public class DataManager{
         String query = "select rank from user_accounts where username='%s' and password='%s'"; //TODO change to prepared statment
         query  = String.format(query, username,password);
         Statement stmt; 
-        Boolean result=false;
+        
         
         try{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+          
 
             
             if (rs.next()) {
@@ -1360,7 +1360,7 @@ public class DataManager{
             
             stmt = conn.createStatement(); 
             ResultSet rs = stmt.executeQuery(query);
-            ResultSetMetaData rsmd = rs.getMetaData();
+         
 
             
            

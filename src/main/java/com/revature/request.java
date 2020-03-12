@@ -33,7 +33,7 @@ public class request extends HttpServlet {
 			
          
       // Get an array of Cookies associated with this domain
-	  Cookie[] cookies = request.getCookies();
+	  
 	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");
@@ -88,7 +88,7 @@ public class request extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-				Cookie[] cookies = request.getCookies();
+				
 	  
 				Cookie user=getCookie(request, "user");
 				String rand ="";  
@@ -96,8 +96,8 @@ public class request extends HttpServlet {
 DiskFileItemFactory factory = new DiskFileItemFactory();
 
 // Configure a repository (to ensure a secure temp location is used)
-ServletContext servletContext = this.getServletConfig().getServletContext();
-File repository = (File) servletContext.getAttribute("javax.servlet.context.tempdir");
+
+
 factory.setRepository(new File("c:\\temp"));
 
 // Create a new file upload handler
@@ -119,11 +119,11 @@ try{
 						System.out.println(test+"-----------"+bucket[i]);
 						i++;
 					} else {
-						String fieldName = item.getFieldName();
+						
 						String fileName = item.getName();
-						String contentType = item.getContentType();
-						boolean isInMemory = item.isInMemory();
-						long sizeInBytes = item.getSize();
+						
+						
+						
 					// processUploadedFile(item);
 					// Process a file upload
 						if(fileName.length()>2){
@@ -138,7 +138,7 @@ try{
 			}catch(Exception e){}
 				String amount = bucket[0];
 				String comment = bucket[1];
-				String picture = bucket[2];
+				
 				
 				DataManager session = new DataManager();
 		session.connect();

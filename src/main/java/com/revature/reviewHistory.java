@@ -26,7 +26,7 @@ public class reviewHistory extends HttpServlet {
 			
          
       // Get an array of Cookies associated with this domain
-	  Cookie[] cookies = request.getCookies();
+	  
 	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");		
@@ -146,7 +146,7 @@ public void handleRequest(HttpServletRequest req, HttpServletResponse res) throw
 	res.setContentType("text/html");
 
 
-	Cookie[] cookies = req.getCookies();
+	
 	  
 		Cookie user=getCookie(req, "user");
 

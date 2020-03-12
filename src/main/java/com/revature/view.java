@@ -25,7 +25,7 @@ public class view extends HttpServlet {
 			
          
       // Get an array of Cookies associated with this domain
-	  Cookie[] cookies = request.getCookies();
+	  
 	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");		
@@ -70,7 +70,7 @@ public class view extends HttpServlet {
 		writer.append("<th>amount</th>");
 
 		writer.append("</tr>");
-		String filePath = getServletContext().getInitParameter("file-upload"); 
+		
 		for (int i = 0; i < result.size(); i=i+5) {
 			System.out.println(result.get(i));
 		

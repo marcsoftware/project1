@@ -27,7 +27,7 @@ public class Profile extends HttpServlet {
 			
          
       // Get an array of Cookies associated with this domain
-	  Cookie[] cookies = request.getCookies();
+	  
 	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");
@@ -100,7 +100,7 @@ public class Profile extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) 
 			throws ServletException, IOException {
-				Cookie[] cookies = request.getCookies();
+				
 	  
 				Cookie user=getCookie(request, "user");
 

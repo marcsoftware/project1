@@ -26,7 +26,7 @@ public class reviewInfo extends HttpServlet {
 			
          
       // Get an array of Cookies associated with this domain
-	  Cookie[] cookies = request.getCookies();
+	  
 	  
 		Cookie user=getCookie(request, "user");
 		Cookie password=getCookie(request, "password");		
