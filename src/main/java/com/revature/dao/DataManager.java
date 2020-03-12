@@ -944,7 +944,7 @@ public class DataManager{
   
              password=stringBuffer.toString();
          } catch (NoSuchAlgorithmException exception) {
-             // TODO Auto-generated catch block
+            
              exception.printStackTrace();
          }
         return password;
@@ -967,7 +967,7 @@ public class DataManager{
    
               password=stringBuffer.toString();
           } catch (NoSuchAlgorithmException exception) {
-              // TODO Auto-generated catch block
+ 
               exception.printStackTrace();
           }
           //
@@ -1095,7 +1095,7 @@ public class DataManager{
           //  System.out.println("digestedMD5(hex):" + stringBuffer.toString());
             password=stringBuffer.toString();
         } catch (NoSuchAlgorithmException exception) {
-            // TODO Auto-generated catch block
+            
             exception.printStackTrace();
         }
         //
